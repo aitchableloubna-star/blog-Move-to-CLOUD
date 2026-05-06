@@ -1,5 +1,7 @@
+// Initialisation des icônes Lucide
 lucide.createIcons();
 
+// Gestion dynamique du menu (carré bleu)
 const navItems = document.querySelectorAll('.nav-item');
 
 navItems.forEach(item => {
