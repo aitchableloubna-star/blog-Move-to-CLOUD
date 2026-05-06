@@ -5,39 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casanet | Expert Cloud & Digital</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts pour un look SaaS moderne -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="logo">
-            <!-- Nom du fichier : logo-casanet.png -->
             <img src="logo-casanet.png" alt="Casanet Logo" class="site-logo">
         </div>
         <ul class="nav-links">
-            <li><a href="#home">Accueil</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#about">À propos</a></li>
-            <li><a href="#contact" class="nav-btn">Contact</a></li>
+            <!-- La classe 'active' se déplacera via JavaScript -->
+            <li><a href="#home" class="nav-item active">Accueil</a></li>
+            <li><a href="#blog" class="nav-item">Blog</a></li>
+            <li><a href="#about" class="nav-item">À propos</a></li>
+            <li><a href="#contact" class="nav-item">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
     <header id="home" class="hero">
         <div class="container">
             <h1>Simplifiez votre transition vers le <span class="gradient-text">cloud</span> avec Casanet</h1>
             <p class="hero-subtitle">Accélérez votre croissance avec une infrastructure agile, sécurisée et optimisée pour l'avenir numérique du Maroc.</p>
             <div class="hero-btns">
                 <a href="#blog" class="btn-primary">Découvrir nos solutions</a>
-                <a href="#contact" class="btn-secondary">Parler à un expert</a>
+                <!-- Bouton "Parler à un expert" supprimé -->
             </div>
         </div>
     </header>
 
-    <!-- Section Blog (Anciennement Solutions) -->
     <section id="blog" class="section">
         <div class="container">
             <h2 class="section-title">Nos Solutions Cloud</h2>
@@ -61,7 +57,6 @@
         </div>
     </section>
 
-    <!-- Pied de page -->
     <footer>
         <div class="container">
             <p>&copy; 2026 Casanet. Partenaire de votre transformation digitale au Maroc.</p>
