@@ -1,0 +1,56 @@
+:root {
+    --primary: #0062ff;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --text: #475569;
+    --gradient: linear-gradient(135deg, #0062ff 0%, #00d2ff 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body { background-color: var(--light); color: var(--text); line-height: 1.6; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+/* Navbar */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 2rem; background: rgba(255, 255, 255, 0.9);
+    position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
+}
+
+.logo { font-size: 1.5rem; font-weight: 800; color: var(--dark); }
+.logo span { color: var(--primary); }
+
+.nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary); }
+
+/* Hero Section */
+.hero {
+    padding: 8rem 0; text-align: center; background: white;
+}
+
+.hero h1 { font-size: 3.5rem; color: var(--dark); margin-bottom: 1.5rem; line-height: 1.2; }
+.gradient-text { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* Cards Style */
+.grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;
+}
+
+.card {
+    background: white; padding: 2.5rem; border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.card:hover { transform: translateY(-10px); border-color: var(--primary); }
+
+.card i { color: var(--primary); margin-bottom: 1rem; width: 40px; height: 40px; }
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary); color: white !important;
+    padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none;
+}
