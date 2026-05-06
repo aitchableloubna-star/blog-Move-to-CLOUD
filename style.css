@@ -7,77 +7,75 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-body { background-color: var(--light); color: var(--text); line-height: 1.6; scroll-behavior: smooth; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+body { color: var(--text); line-height: 1.6; scroll-behavior: smooth; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
+
+/* VIDÉO EN ARRIÈRE-PLAN PLEIN ÉCRAN */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Derrière tout le contenu */
+    overflow: hidden;
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La vidéo couvre tout l'écran sans se déformer */
+}
+
+/* Overlay pour rendre le texte lisible sur la vidéo */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85); /* Fond blanc semi-transparent */
+}
 
 /* Navbar */
 .navbar {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 5%; background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem 5%; background: rgba(255, 255, 255, 0.9);
     position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* LOGO PLUS GRAND */
-.site-logo { 
-    height: 70px; /* Augmenté de 45px à 70px */
-    width: auto; 
-    display: block; 
-}
+.site-logo { height: 70px; width: auto; }
 
 .nav-links { display: flex; list-style: none; gap: 1rem; align-items: center; }
 
-/* STYLE DES ONGLETS DYNAMIQUES */
 .nav-item {
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 500;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    text-decoration: none; color: var(--dark); font-weight: 500;
+    padding: 0.6rem 1.2rem; border-radius: 8px; transition: 0.3s;
 }
 
-/* Le carré bleu ne s'affiche que sur l'élément avec la classe .active */
-.nav-item.active {
-    background: var(--primary);
-    color: white !important;
-}
+.nav-item.active { background: var(--primary); color: white !important; }
 
-.nav-item:hover:not(.active) {
-    background: rgba(0, 98, 255, 0.1);
-    color: var(--primary);
-}
-
-/* Hero Section */
-.hero { padding: 140px 0 100px 0; text-align: center; background: white; }
+/* Sections */
+.hero { padding: 160px 0 120px 0; text-align: center; }
 .hero h1 { font-size: 3.5rem; color: var(--dark); margin-bottom: 25px; font-weight: 800; }
 .gradient-text { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
 .hero-subtitle {
-    font-size: 1.25rem;
-    max-width: 750px;
-    margin: 0 auto 40px auto;
-    color: var(--text);
+    font-size: 1.25rem; max-width: 750px; margin: 0 auto 40px auto; color: var(--text);
 }
 
 .btn-primary {
-    background: var(--primary);
-    color: white;
-    padding: 1.2rem 2.5rem;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s;
-    display: inline-block;
+    background: var(--primary); color: white; padding: 1.2rem 2.5rem;
+    border-radius: 12px; text-decoration: none; font-weight: 600; display: inline-block;
 }
 
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,98,255,0.2); }
-
-/* Rest of styles */
 .section { padding: 80px 0; }
 .section-title { text-align: center; font-size: 2rem; color: var(--dark); margin-bottom: 40px; }
+
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-.card { background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); transition: 0.3s; border: 1px solid #e2e8f0; }
-.card:hover { transform: translateY(-10px); border-color: var(--primary); }
-.card i { color: var(--primary); margin-bottom: 1.5rem; width: 32px; height: 32px; }
-footer { padding: 40px 0; text-align: center; border-top: 1px solid #e2e8f0; margin-top: 50px; }
+.card { 
+    background: rgba(255, 255, 255, 0.9); /* Cartes légèrement transparentes */
+    padding: 2.5rem; border-radius: 16px; border: 1px solid #e2e8f0; backdrop-filter: blur(5px);
+}
+
+footer { padding: 40px 0; text-align: center; background: rgba(255, 255, 255, 0.9); }
