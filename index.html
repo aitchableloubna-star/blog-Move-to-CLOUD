@@ -10,12 +10,19 @@
 </head>
 <body>
 
+    <!-- Vidéo en arrière-plan -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="hero-casanet.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
     <nav class="navbar">
         <div class="logo">
             <img src="logo-casanet.png" alt="Casanet Logo" class="site-logo">
         </div>
         <ul class="nav-links">
-            <!-- La classe 'active' se déplacera via JavaScript -->
             <li><a href="#home" class="nav-item active">Accueil</a></li>
             <li><a href="#blog" class="nav-item">Blog</a></li>
             <li><a href="#about" class="nav-item">À propos</a></li>
@@ -29,7 +36,6 @@
             <p class="hero-subtitle">Accélérez votre croissance avec une infrastructure agile, sécurisée et optimisée pour l'avenir numérique du Maroc.</p>
             <div class="hero-btns">
                 <a href="#blog" class="btn-primary">Découvrir nos solutions</a>
-                <!-- Bouton "Parler à un expert" supprimé -->
             </div>
         </div>
     </header>
