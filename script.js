@@ -1,32 +1,30 @@
-// Initialisation des icônes Lucide
 lucide.createIcons();
 
-// Animation d'apparition au défilement (Scroll Reveal)
-const observerOptions = {
-    threshold: 0.1
-};
+// GESTION DU CARRÉ BLEU DYNAMIQUE
+const navItems = document.querySelectorAll('.nav-item');
 
+navItems.forEach(item => {
+    item.addEventListener('click', function() {
+        // Supprime la classe active de tous les onglets
+        navItems.forEach(nav => nav.classList.remove('active'));
+        // Ajoute la classe active uniquement à celui cliqué
+        this.classList.add('active');
+    });
+});
+
+// Scroll Reveal
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
         }
     });
-}, observerOptions);
+}, { threshold: 0.1 });
 
 document.querySelectorAll('.card').forEach(card => {
-    card.classList.add('fade-in');
+    card.style.opacity = "0";
+    card.style.transform = "translateY(20px)";
+    card.style.transition = "all 0.6s ease-out";
     observer.observe(card);
-});
-
-// Ajout d'un petit effet au scroll pour la navbar
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.padding = "0.5rem 5%";
-        navbar.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
-    } else {
-        navbar.style.padding = "1rem 5%";
-        navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
-    }
 });
