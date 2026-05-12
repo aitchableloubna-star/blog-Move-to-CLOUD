@@ -42,6 +42,11 @@
         details { background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; border: 1px solid #e2e8f0; cursor: pointer; }
         summary { font-weight: 700; color: var(--dark); outline: none; display: flex; justify-content: space-between; align-items: center; }
         
+        /* Styles additionnels pour la section À Propos sans changer le design global */
+        .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
+        .value-card { display: flex; align-items: center; gap: 15px; background: white; padding: 15px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; }
+        .value-card i { color: var(--primary); }
+
         .cta-section { 
             background: var(--primary); color: white; padding: 80px 2rem; border-radius: 30px; 
             text-align: center; margin: 40px auto; max-width: 1100px;
@@ -50,7 +55,7 @@
         .btn-white:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
         @media (max-width: 850px) {
-            .section-intro, .stats-grid { grid-template-columns: 1fr; }
+            .section-intro, .stats-grid, .about-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -63,6 +68,7 @@
         <ul class="nav-links">
             <li><a href="index.html" class="nav-item">Accueil</a></li>
             <li><a href="blog.html" class="nav-item active">Blog</a></li>
+            <li><a href="#propos" class="nav-item">À Propos</a></li>
             <li><a href="contact.html" class="nav-item">Contact</a></li>
         </ul>
     </nav>
@@ -89,6 +95,23 @@
                 
                 <div class="intro-img-container">
                     <img src="dashboard-cloud.png" alt="Cloud Analytics Dashboard" class="intro-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="propos" class="section" style="background: #f8fafc;">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <h2 class="section-title" style="text-align: left;">À propos de Casanet</h2>
+                    <p>Filiale technologique de <strong>Maroc Telecom</strong>, Casanet est un acteur majeur du digital au Maroc. Nous accompagnons les entreprises dans la mise en œuvre de solutions Cloud et Data performantes.</p>
+                    <p style="margin-top: 15px;">Forts de notre expertise locale et des technologies internationales, nous transformons vos défis complexes en solutions agiles et sécurisées.</p>
+                </div>
+                <div>
+                    <div class="value-card"><i data-lucide="shield-check"></i> <span>Expertise Certifiée</span></div>
+                    <div class="value-card"><i data-lucide="zap"></i> <span>Innovation Agile</span></div>
+                    <div class="value-card"><i data-lucide="users"></i> <span>Support Local 24/7</span></div>
                 </div>
             </div>
         </div>
