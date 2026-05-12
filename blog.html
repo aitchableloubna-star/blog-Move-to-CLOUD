@@ -3,222 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Move to Cloud</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Blog | Move to Cloud - Casanet</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
     <style>
-        :root { 
-            --primary: #0062ff; /* Ton bleu d'origine */
-            --bg: #ffffff;
-            --glass: rgba(255, 255, 255, 0.8);
-            --border: rgba(0, 98, 255, 0.1);
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --accent-light: #e0f2fe;
+        /* Styles spécifiques au Blog pour compléter style.css */
+        .blog-hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('hero-bg.jpg') center/cover no-repeat;
+            padding: 100px 0 60px 0;
+            text-align: center;
+        }
+        .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 60px 0; }
+        .intro-img { background: #e0f2fe; border-radius: 24px; padding: 2rem; width: 100%; height: auto; }
+        
+        .timeline { max-width: 800px; margin: 40px auto; }
+        .step { display: flex; gap: 2rem; margin-bottom: 2rem; align-items: flex-start; }
+        .step-num { 
+            background: var(--primary); color: white; min-width: 40px; height: 40px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; 
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        html { scroll-behavior: smooth; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+        .stat-item { background: var(--primary); color: white; padding: 2rem; border-radius: 15px; text-align: center; }
+        .stat-item h4 { font-size: 2rem; margin-bottom: 5px; }
 
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
-
-        /* --- NAVIGATION --- */
-        .nav {
-            padding: 15px 8%;
-            display: flex; justify-content: space-between; align-items: center;
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            position: sticky; top: 0; z-index: 100;
-            background: rgba(255, 255, 255, 0.9);
+        .faq-container { max-width: 800px; margin: 40px auto; }
+        details { background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; border: 1px solid #e2e8f0; cursor: pointer; }
+        summary { font-weight: 700; color: var(--dark); outline: none; }
+        
+        .cta-section { 
+            background: var(--primary); color: white; padding: 80px 2rem; border-radius: 30px; 
+            text-align: center; margin: 40px auto; max-width: 1100px;
         }
-        .logo-img { height: 45px; width: auto; }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 100px 8% 80px;
-            display: grid; grid-template-columns: 1.2fr 1fr;
-            align-items: center; gap: 40px;
-            background: radial-gradient(circle at top right, var(--accent-light), transparent);
-        }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 600px; }
-        .hero-btns { display: flex; gap: 15px; }
-        .btn { padding: 14px 28px; border-radius: 10px; font-weight: 700; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
-        .btn:hover { transform: translateY(-3px); opacity: 0.9; }
-
-        /* --- SECTIONS COMMUNES --- */
-        section { padding: 80px 8%; }
-        .section-title { font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 50px; }
-        .tag { color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; display: block; text-align: center; margin-bottom: 10px; }
-
-        /* --- INTRODUCTION --- */
-        .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .img-placeholder { background: var(--accent-light); border-radius: 24px; padding: 20px; display: flex; justify-content: center; }
-        .img-placeholder img { width: 100%; max-width: 450px; border-radius: 15px; }
-
-        /* --- CARDS DÉFIS --- */
-        .grid-defis { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
-        .card { 
-            padding: 30px; background: white; border: 1px solid var(--border); border-radius: 20px; 
-            transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-        }
-        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
-        .icon-circle { width: 50px; height: 50px; background: var(--accent-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 20px; }
-
-        /* --- SOLUTIONS (Timeline) --- */
-        .timeline { max-width: 800px; margin: 0 auto; }
-        .step { display: flex; gap: 25px; margin-bottom: 40px; }
-        .step-num { min-width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; }
-
-        /* --- STATS DATA & IA --- */
-        .stats-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; margin-top: 40px; }
-        .stat-card { background: var(--primary); color: white; padding: 30px; border-radius: 20px; }
-        .stat-card h3 { font-size: 2rem; margin-bottom: 5px; }
-
-        /* --- FAQ --- */
-        .faq-container { max-width: 700px; margin: 0 auto; }
-        details { background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; }
-        summary { font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-
-        /* --- CTA --- */
-        .cta { background: var(--primary); color: white; text-align: center; border-radius: 30px; margin: 40px 8%; padding: 60px; }
-        .cta h2 { font-size: 2.5rem; margin-bottom: 20px; }
-        .btn-white { background: white; color: var(--primary); }
+        .btn-white { background: white; color: var(--primary); padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; }
 
         @media (max-width: 850px) {
-            .hero, .intro-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-btns { justify-content: center; }
-            .stats-container { grid-template-columns: 1fr 1fr; }
+            .section-intro, .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav">
-        <a href="index.html"><img src="image_9b1d74.jpg" alt="Logo" class="logo-img"></a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="Blog.html" class="active">Blog</a>
-            <a href="About.html">About</a>
-            <a href="Contact.html">Contact</a>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo-casanet.png" alt="Logo" class="site-logo">
         </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-item">Accueil</a></li>
+            <li><a href="blog.html" class="nav-item active">Blog</a></li>
+            <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
     </nav>
 
-    <section class="hero">
-        <div>
-            <p style="color: var(--primary); font-weight: 700;">Stratégie Cloud</p>
-            <h1>Move to <span>Cloud</span></h1>
-            <p>Réussir sa stratégie cloud sans créer de complexité supplémentaire. Modernisez vos infrastructures grâce à l'IA et la Data.</p>
+    <header class="blog-hero">
+        <div class="container">
+            <h1 class="headline">Move to <span class="gradient-text">Cloud</span></h1>
+            <p class="hero-subtitle">Réussir sa stratégie cloud sans créer de complexité supplémentaire.</p>
+            <p style="max-width: 800px; margin: 0 auto 30px auto; color: var(--text);">Les entreprises modernisent leurs infrastructures grâce au cloud computing, à la data et à l’intelligence artificielle afin d’améliorer leurs performances tout en simplifiant leur architecture numérique.</p>
             <div class="hero-btns">
-                <a href="#defis" class="btn btn-primary">Découvrir</a>
-                <a href="Contact.html" class="btn btn-outline">Commencer</a>
+                <a href="#intro" class="btn-primary">Découvrir l'article</a>
             </div>
         </div>
-        <div class="img-placeholder">
-            <img src="https://illustrations.popsy.co/amber/cloud-storage.svg" alt="Cloud Illustration">
-        </div>
-    </section>
+    </header>
 
-    <section id="intro">
-        <div class="intro-grid">
-            <div class="img-placeholder">
-                <img src="https://illustrations.popsy.co/amber/data-analysis.svg" alt="Dashboard">
-            </div>
-            <div>
-                <span class="tag">Vision</span>
-                <h2 class="section-title" style="text-align: left;">Pourquoi le cloud est devenu indispensable ?</h2>
-                <p>Le cloud computing permet aux entreprises d’accéder à des infrastructures flexibles et sécurisées. Une migration organisée facilite la collaboration et réduit les coûts, évitant ainsi les architectures complexes.</p>
+    <section id="intro" class="section">
+        <div class="container">
+            <div class="section-intro">
+                <div>
+                    <h2 class="section-title" style="text-align: left;">Pourquoi le cloud est devenu indispensable ?</h2>
+                    <p>Le cloud computing permet aux entreprises d’accéder à des infrastructures flexibles, sécurisées et évolutives. Il facilite la collaboration, réduit les coûts et accélère la transformation digitale. Cependant, une migration mal organisée peut créer une architecture complexe.</p>
+                </div>
+                <img src="https://illustrations.popsy.co/amber/data-analysis.svg" alt="Dashboard" class="intro-img">
             </div>
         </div>
     </section>
 
-    <section id="defis" style="background: #fcfcfc;">
-        <span class="tag">Obstacles</span>
-        <h2 class="section-title">Les défis du cloud</h2>
-        <div class="grid-defis">
-            <div class="card">
-                <div class="icon-circle"><i data-lucide="layers"></i></div>
-                <h3>Complexité</h3>
-                <p style="color: var(--text-muted);">Intégration difficile des anciennes infrastructures.</p>
-            </div>
-            <div class="card">
-                <div class="icon-circle"><i data-lucide="shield"></i></div>
-                <h3>Sécurité</h3>
-                <p style="color: var(--text-muted);">Protection essentielle des données sensibles.</p>
-            </div>
-            <div class="card">
-                <div class="icon-circle"><i data-lucide="trending-down"></i></div>
-                <h3>Coûts</h3>
-                <p style="color: var(--text-muted);">Éviter les dépenses imprévues de gestion.</p>
-            </div>
-            <div class="card">
-                <div class="icon-circle"><i data-lucide="zap"></i></div>
-                <h3>Performance</h3>
-                <p style="color: var(--text-muted);">Optimisation pour une rapidité maximale.</p>
+    <section class="section" style="background: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Les défis du cloud</h2>
+            <div class="grid">
+                <div class="card">
+                    <i data-lucide="alert-triangle"></i>
+                    <h3>Complexité</h3>
+                    <p>Les anciennes infrastructures sont parfois difficiles à intégrer au cloud.</p>
+                </div>
+                <div class="card">
+                    <i data-lucide="lock"></i>
+                    <h3>Sécurité</h3>
+                    <p>La protection des données sensibles reste essentielle et prioritaire.</p>
+                </div>
+                <div class="card">
+                    <i data-lucide="trending-down"></i>
+                    <h3>Coûts cachés</h3>
+                    <p>Une mauvaise gestion peut augmenter les dépenses imprévues.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section>
-        <span class="tag">Étapes</span>
-        <h2 class="section-title">Réussir sa migration</h2>
-        <div class="timeline">
-            <div class="step">
-                <div class="step-num">1</div>
-                <div><h3>Audit de l'infrastructure</h3><p>Analyse complète des serveurs et applications.</p></div>
-            </div>
-            <div class="step">
-                <div class="step-num">2</div>
-                <div><h3>Migration progressive</h3><p>Déplacement par étapes pour limiter les risques.</p></div>
-            </div>
-            <div class="step">
-                <div class="step-num">3</div>
-                <div><h3>Automatisation</h3><p>Intégration DevOps et outils cloud natifs.</p></div>
-            </div>
-            <div class="step">
-                <div class="step-num">4</div>
-                <div><h3>Monitoring</h3><p>Surveillance continue des performances.</p></div>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Comment réussir sa migration ?</h2>
+            <div class="timeline">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div><h4>Audit de l'infrastructure</h4><p>Analyser les serveurs, applications et données existantes.</p></div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div><h4>Migration progressive</h4><p>Déplacer les services étape par étape pour réduire les risques.</p></div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div><h4>Automatisation</h4><p>Utiliser DevOps et l'IA pour simplifier les processus.</p></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section style="background: #f8fafc;">
-        <span class="tag">Innovation</span>
-        <h2 class="section-title">Le cloud au service de la Data et de l’IA</h2>
-        <div class="stats-container">
-            <div class="stat-card"><h3>85%</h3><p>Usage Cloud</p></div>
-            <div class="stat-card"><h3>60%</h3><p>Réduction Coûts</p></div>
-            <div class="stat-card"><h3>3x</h3><p>Plus Rapide</p></div>
-            <div class="stat-card"><h3>90%</h3><p>Collaboration</p></div>
+    <section class="section" style="background: #e0f2fe;">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Le cloud au service de la Data et de l’IA</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">Les plateformes cloud permettent d’utiliser l’intelligence artificielle sans investir dans des infrastructures coûteuses.</p>
+            <div class="stats-grid">
+                <div class="stat-item"><h4>85%</h4><p>Usage Cloud</p></div>
+                <div class="stat-item"><h4>60%</h4><p>Réduction Coûts</p></div>
+                <div class="stat-item"><h4>3x</h4><p>Plus rapide</p></div>
+                <div class="stat-item"><h4>90%</h4><p>Collaboration</p></div>
+            </div>
         </div>
     </section>
 
-    <section>
-        <h2 class="section-title">Questions fréquentes</h2>
-        <div class="faq-container">
-            <details>
-                <summary>Pourquoi migrer vers le cloud ? <i data-lucide="chevron-down"></i></summary>
-                <p>Pour la flexibilité, la scalabilité et la réduction des coûts d'infrastructure physique.</p>
-            </details>
-            <details>
-                <summary>Le cloud est-il sécurisé ? <i data-lucide="chevron-down"></i></summary>
-                <p>Oui, avec les protocoles de chiffrement modernes et une gestion stricte des accès.</p>
-            </details>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">FAQ</h2>
+            <div class="faq-container">
+                <details>
+                    <summary>Pourquoi migrer vers le cloud ?</summary>
+                    <p style="padding-top: 10px;">Pour gagner en agilité, en sécurité et réduire les coûts liés à la maintenance physique des serveurs.</p>
+                </details>
+                <details>
+                    <summary>Le cloud est-il sécurisé ?</summary>
+                    <p style="padding-top: 10px;">Oui, les fournisseurs cloud utilisent des protocoles de sécurité plus avancés que la plupart des solutions locales.</p>
+                </details>
+            </div>
         </div>
     </section>
 
-    <div class="cta">
-        <h2>Transformez votre infrastructure</h2>
-        <p style="margin-bottom: 30px;">Prêt à passer au niveau supérieur ?</p>
-        <a href="Contact.html" class="btn btn-white">Commencer maintenant</a>
+    <div class="container">
+        <div class="cta-section">
+            <h2>Transformez votre infrastructure avec le cloud.</h2>
+            <a href="contact.html" class="btn-white">Commencer maintenant</a>
+        </div>
     </div>
+
+    <footer>
+        <p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
+    </footer>
 
     <script>
         lucide.createIcons();
