@@ -3,375 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Move to Cloud | Stratégie & Innovation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Blog | Move to Cloud</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        :root {
-            --primary: #0070f3;
-            --secondary: #7dd3fc;
-            --accent: #e0f2fe;
+        :root { 
+            --primary: #0062ff; /* Ton bleu d'origine */
             --bg: #ffffff;
+            --glass: rgba(255, 255, 255, 0.8);
+            --border: rgba(0, 98, 255, 0.1);
             --text-main: #1e293b;
             --text-muted: #64748b;
-            --glass: rgba(255, 255, 255, 0.7);
-            --border: rgba(0, 112, 243, 0.1);
+            --accent-light: #e0f2fe;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        body { 
-            background-color: #f8fafc; 
-            color: var(--text-main); 
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
+
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
 
         /* --- NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 20px 8%;
+        .nav {
+            padding: 15px 8%;
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
         }
-        .logo { font-weight: 800; font-size: 1.4rem; color: var(--primary); letter-spacing: -1px; }
+        .logo-img { height: 45px; width: auto; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
 
         /* --- HERO SECTION --- */
         .hero {
-            padding: 180px 8% 100px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            background: radial-gradient(circle at top right, var(--accent), transparent);
-            position: relative;
+            padding: 100px 8% 80px;
+            display: grid; grid-template-columns: 1.2fr 1fr;
+            align-items: center; gap: 40px;
+            background: radial-gradient(circle at top right, var(--accent-light), transparent);
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 10%; left: 5%; width: 300px; height: 300px;
-            background: var(--secondary);
-            filter: blur(150px); opacity: 0.3; z-index: -1;
-        }
-        .hero h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; color: var(--text-main); }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
         .hero h1 span { color: var(--primary); }
-        .hero p.subtitle { font-size: 1.5rem; font-weight: 600; color: var(--primary); margin-bottom: 15px; }
-        .hero p.description { font-size: 1.1rem; color: var(--text-muted); max-width: 550px; margin-bottom: 35px; line-height: 1.8; }
+        .hero p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 600px; }
         .hero-btns { display: flex; gap: 15px; }
-        
-        /* --- BOUTONS --- */
-        .btn {
-            padding: 16px 32px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.4s; cursor: pointer; display: inline-block;
-        }
-        .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 20px rgba(0, 112, 243, 0.2); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0, 112, 243, 0.3); }
+        .btn { padding: 14px 28px; border-radius: 10px; font-weight: 700; text-decoration: none; transition: 0.3s; cursor: pointer; border: none; }
+        .btn-primary { background: var(--primary); color: white; }
         .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
-        .btn-outline:hover { background: var(--accent); }
+        .btn:hover { transform: translateY(-3px); opacity: 0.9; }
 
-        .hero-img { position: relative; display: flex; justify-content: center; }
-        .hero-img img { width: 100%; max-width: 600px; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.1)); animation: float 6s ease-in-out infinite; }
-
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-
-        /* --- SECTIONS GÉNÉRALES --- */
-        section { padding: 100px 8%; }
-        .section-tag { color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 15px; display: block; }
-        .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 40px; line-height: 1.2; }
+        /* --- SECTIONS COMMUNES --- */
+        section { padding: 80px 8%; }
+        .section-title { font-size: 2.2rem; font-weight: 800; text-align: center; margin-bottom: 50px; }
+        .tag { color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; display: block; text-align: center; margin-bottom: 10px; }
 
         /* --- INTRODUCTION --- */
-        .intro-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .dashboard-mockup {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
-        }
+        .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .img-placeholder { background: var(--accent-light); border-radius: 24px; padding: 20px; display: flex; justify-content: center; }
+        .img-placeholder img { width: 100%; max-width: 450px; border-radius: 15px; }
 
         /* --- CARDS DÉFIS --- */
-        .grid-defis { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-        .card-defi {
-            padding: 40px; background: white; border-radius: 24px; border: 1px solid #f1f5f9;
-            transition: 0.4s;
+        .grid-defis { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .card { 
+            padding: 30px; background: white; border: 1px solid var(--border); border-radius: 20px; 
+            transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
-        .card-defi:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0, 112, 243, 0.05);
-        }
-        .card-icon {
-            width: 60px; height: 60px; background: var(--accent); border-radius: 14px;
-            display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 25px;
-        }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .icon-circle { width: 50px; height: 50px; background: var(--accent-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 20px; }
 
-        /* --- TIMELINE SOLUTIONS --- */
-        .timeline { position: relative; max-width: 900px; margin: 40px auto; }
-        .step {
-            display: flex; gap: 40px; margin-bottom: 60px; position: relative;
-        }
-        .step-num {
-            min-width: 50px; height: 50px; background: var(--primary); color: white;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800;
-            z-index: 2;
-        }
-        .step::after {
-            content: ''; position: absolute; left: 24px; top: 50px; width: 2px; height: calc(100% + 10px);
-            background: var(--accent); z-index: 1;
-        }
-        .step:last-child::after { display: none; }
+        /* --- SOLUTIONS (Timeline) --- */
+        .timeline { max-width: 800px; margin: 0 auto; }
+        .step { display: flex; gap: 25px; margin-bottom: 40px; }
+        .step-num { min-width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; }
 
-        /* --- DATA & AI STATS --- */
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
-        .stat-item h3 { font-size: 3rem; color: var(--primary); font-weight: 800; }
-        .stat-item p { color: var(--text-muted); font-weight: 600; }
-
-        /* --- TECHNOLOGIES --- */
-        .tech-flex { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-        .tech-pill {
-            padding: 12px 24px; background: white; border-radius: 50px; border: 1px solid var(--border);
-            font-weight: 600; transition: 0.3s; cursor: pointer;
-        }
-        .tech-pill:hover { background: var(--primary); color: white; }
+        /* --- STATS DATA & IA --- */
+        .stats-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; margin-top: 40px; }
+        .stat-card { background: var(--primary); color: white; padding: 30px; border-radius: 20px; }
+        .stat-card h3 { font-size: 2rem; margin-bottom: 5px; }
 
         /* --- FAQ --- */
-        .faq-item {
-            background: white; margin-bottom: 15px; border-radius: 16px; border: 1px solid #f1f5f9;
-            overflow: hidden;
-        }
-        .faq-question {
-            padding: 20px 30px; display: flex; justify-content: space-between; align-items: center;
-            cursor: pointer; font-weight: 700;
-        }
-        .faq-answer { padding: 0 30px; height: 0; overflow: hidden; transition: 0.3s ease-out; color: var(--text-muted); }
+        .faq-container { max-width: 700px; margin: 0 auto; }
+        details { background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; }
+        summary { font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; }
 
         /* --- CTA --- */
-        .cta-box {
-            background: var(--primary); border-radius: 40px; padding: 80px; text-align: center;
-            color: white; position: relative; overflow: hidden;
-        }
-        .cta-box h2 { font-size: 3rem; margin-bottom: 30px; }
-        .cta-box .btn-white { background: white; color: var(--primary); }
+        .cta { background: var(--primary); color: white; text-align: center; border-radius: 30px; margin: 40px 8%; padding: 60px; }
+        .cta h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .btn-white { background: white; color: var(--primary); }
 
-        /* --- FOOTER --- */
-        footer { padding: 80px 8% 40px; background: #fff; border-top: 1px solid #f1f5f9; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
-        .footer-logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); margin-bottom: 20px; }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero, .intro-container { grid-template-columns: 1fr; text-align: center; }
-            .hero-btns, .hero p.description { justify-content: center; margin-left: auto; margin-right: auto; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 850px) {
+            .hero, .intro-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-btns { justify-content: center; }
+            .stats-container { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">CASANET CLOUD</div>
+    <nav class="nav">
+        <a href="index.html"><img src="image_9b1d74.jpg" alt="Logo" class="logo-img"></a>
         <div class="nav-links">
-            <a href="#" class="btn btn-primary" style="padding: 10px 20px;">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="Blog.html" class="active">Blog</a>
+            <a href="About.html">About</a>
+            <a href="Contact.html">Contact</a>
         </div>
     </nav>
 
     <section class="hero">
-        <div data-aos="fade-right">
-            <p class="subtitle">Réussir sa stratégie cloud</p>
+        <div>
+            <p style="color: var(--primary); font-weight: 700;">Stratégie Cloud</p>
             <h1>Move to <span>Cloud</span></h1>
-            <p class="description">Les entreprises modernisent leurs infrastructures grâce au cloud computing, à la data et à l’intelligence artificielle afin d’améliorer leurs performances tout en simplifiant leur architecture numérique.</p>
+            <p>Réussir sa stratégie cloud sans créer de complexité supplémentaire. Modernisez vos infrastructures grâce à l'IA et la Data.</p>
             <div class="hero-btns">
-                <a href="#intro" class="btn btn-primary">Découvrir</a>
-                <a href="#" class="btn btn-outline">Commencer</a>
+                <a href="#defis" class="btn btn-primary">Découvrir</a>
+                <a href="Contact.html" class="btn btn-outline">Commencer</a>
             </div>
         </div>
-        <div class="hero-img" data-aos="zoom-in">
-            <img src="https://illustrations.popsy.co/amber/high-five.svg" alt="Cloud Innovation">
+        <div class="img-placeholder">
+            <img src="https://illustrations.popsy.co/amber/cloud-storage.svg" alt="Cloud Illustration">
         </div>
     </section>
 
-    <section id="intro" class="intro-container">
-        <div class="dashboard-mockup" data-aos="fade-up">
-            <img src="https://illustrations.popsy.co/amber/data-analysis.svg" alt="Dashboard" style="width: 100%;">
-        </div>
-        <div data-aos="fade-left">
-            <span class="section-tag">Vision</span>
-            <h2 class="section-title">Pourquoi le cloud est devenu indispensable ?</h2>
-            <p class="description">Le cloud computing permet aux entreprises d’accéder à des infrastructures flexibles, sécurisées et évolutives. Il facilite la collaboration, réduit les coûts et accélère la transformation digitale.</p>
+    <section id="intro">
+        <div class="intro-grid">
+            <div class="img-placeholder">
+                <img src="https://illustrations.popsy.co/amber/data-analysis.svg" alt="Dashboard">
+            </div>
+            <div>
+                <span class="tag">Vision</span>
+                <h2 class="section-title" style="text-align: left;">Pourquoi le cloud est devenu indispensable ?</h2>
+                <p>Le cloud computing permet aux entreprises d’accéder à des infrastructures flexibles et sécurisées. Une migration organisée facilite la collaboration et réduit les coûts, évitant ainsi les architectures complexes.</p>
+            </div>
         </div>
     </section>
 
-    <section style="background: #f1f5f9; border-radius: 60px 60px 0 0;">
-        <span class="section-tag" style="text-align: center;">Obstacles</span>
-        <h2 class="section-title" style="text-align: center;">Les défis du cloud</h2>
+    <section id="defis" style="background: #fcfcfc;">
+        <span class="tag">Obstacles</span>
+        <h2 class="section-title">Les défis du cloud</h2>
         <div class="grid-defis">
-            <div class="card-defi" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-icon"><i data-lucide="layers"></i></div>
-                <h3>Complexité des systèmes</h3>
-                <p class="description" style="font-size: 0.9rem;">Les anciennes infrastructures sont parfois difficiles à intégrer au cloud.</p>
+            <div class="card">
+                <div class="icon-circle"><i data-lucide="layers"></i></div>
+                <h3>Complexité</h3>
+                <p style="color: var(--text-muted);">Intégration difficile des anciennes infrastructures.</p>
             </div>
-            <div class="card-defi" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-icon"><i data-lucide="shield-check"></i></div>
-                <h3>Sécurité des données</h3>
-                <p class="description" style="font-size: 0.9rem;">La protection des données sensibles reste une priorité absolue.</p>
+            <div class="card">
+                <div class="icon-circle"><i data-lucide="shield"></i></div>
+                <h3>Sécurité</h3>
+                <p style="color: var(--text-muted);">Protection essentielle des données sensibles.</p>
             </div>
-            <div class="card-defi" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-icon"><i data-lucide="banknote"></i></div>
-                <h3>Coûts cachés</h3>
-                <p class="description" style="font-size: 0.9rem;">Une mauvaise gestion cloud peut augmenter les dépenses inutilement.</p>
+            <div class="card">
+                <div class="icon-circle"><i data-lucide="trending-down"></i></div>
+                <h3>Coûts</h3>
+                <p style="color: var(--text-muted);">Éviter les dépenses imprévues de gestion.</p>
             </div>
-            <div class="card-defi" data-aos="fade-up" data-aos-delay="400">
-                <div class="card-icon"><i data-lucide="zap"></i></div>
+            <div class="card">
+                <div class="icon-circle"><i data-lucide="zap"></i></div>
                 <h3>Performance</h3>
-                <p class="description" style="font-size: 0.9rem;">Les applications doivent être optimisées pour garantir la rapidité.</p>
+                <p style="color: var(--text-muted);">Optimisation pour une rapidité maximale.</p>
             </div>
         </div>
     </section>
 
     <section>
-        <span class="section-tag" style="text-align: center;">Méthodologie</span>
-        <h2 class="section-title" style="text-align: center;">Comment réussir une migration ?</h2>
+        <span class="tag">Étapes</span>
+        <h2 class="section-title">Réussir sa migration</h2>
         <div class="timeline">
-            <div class="step" data-aos="fade-right">
+            <div class="step">
                 <div class="step-num">1</div>
-                <div>
-                    <h3>Audit de l’infrastructure</h3>
-                    <p class="description">Analyser les serveurs, applications et données existantes pour définir le meilleur chemin.</p>
-                </div>
+                <div><h3>Audit de l'infrastructure</h3><p>Analyse complète des serveurs et applications.</p></div>
             </div>
-            <div class="step" data-aos="fade-right" data-aos-delay="100">
+            <div class="step">
                 <div class="step-num">2</div>
-                <div>
-                    <h3>Migration progressive</h3>
-                    <p class="description">Déplacer les services étape par étape pour réduire les interruptions et les risques.</p>
-                </div>
+                <div><h3>Migration progressive</h3><p>Déplacement par étapes pour limiter les risques.</p></div>
             </div>
-            <div class="step" data-aos="fade-right" data-aos-delay="200">
+            <div class="step">
                 <div class="step-num">3</div>
-                <div>
-                    <h3>Automatisation intelligente</h3>
-                    <p class="description">Utiliser DevOps, l'IA et les outils cloud natifs pour gagner en agilité.</p>
-                </div>
+                <div><h3>Automatisation</h3><p>Intégration DevOps et outils cloud natifs.</p></div>
             </div>
-            <div class="step" data-aos="fade-right" data-aos-delay="300">
+            <div class="step">
                 <div class="step-num">4</div>
-                <div>
-                    <h3>Monitoring et sécurité</h3>
-                    <p class="description">Surveiller les performances en temps réel avec des dashboards intelligents.</p>
-                </div>
+                <div><h3>Monitoring</h3><p>Surveillance continue des performances.</p></div>
             </div>
         </div>
     </section>
 
-    <section style="background: white;">
-        <div class="intro-container">
-            <div data-aos="fade-right">
-                <span class="section-tag">Intelligence</span>
-                <h2 class="section-title">Le cloud au service de la Data et de l’IA</h2>
-                <p class="description">Le machine learning et le big data deviennent accessibles sans investissements matériels lourds. Analysez tout en temps réel.</p>
-            </div>
-            <div class="stats-grid" data-aos="zoom-in">
-                <div class="stat-item"><h3>85%</h3><p>Entreprises</p></div>
-                <div class="stat-item"><h3>60%</h3><p>Économie IT</p></div>
-                <div class="stat-item"><h3>3x</h3><p>Plus rapide</p></div>
-                <div class="stat-item"><h3>90%</h3><p>Collaboration</p></div>
-            </div>
-        </div>
-    </section>
-
-    <section style="text-align: center;">
-        <h2 class="section-title">Écosystème technologique</h2>
-        <div class="tech-flex">
-            <div class="tech-pill">AWS</div>
-            <div class="tech-pill">Azure</div>
-            <div class="tech-pill">Google Cloud</div>
-            <div class="tech-pill">Docker</div>
-            <div class="tech-pill">Kubernetes</div>
-            <div class="tech-pill">GitHub</div>
-            <div class="tech-pill">IA & ML</div>
-            <div class="tech-pill">DevOps</div>
+    <section style="background: #f8fafc;">
+        <span class="tag">Innovation</span>
+        <h2 class="section-title">Le cloud au service de la Data et de l’IA</h2>
+        <div class="stats-container">
+            <div class="stat-card"><h3>85%</h3><p>Usage Cloud</p></div>
+            <div class="stat-card"><h3>60%</h3><p>Réduction Coûts</p></div>
+            <div class="stat-card"><h3>3x</h3><p>Plus Rapide</p></div>
+            <div class="stat-card"><h3>90%</h3><p>Collaboration</p></div>
         </div>
     </section>
 
     <section>
-        <h2 class="section-title" style="text-align: center;">Questions fréquentes</h2>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="faq-item">
-                <div class="faq-question">Pourquoi migrer vers le cloud ? <i data-lucide="plus"></i></div>
-                <div class="faq-answer"><p style="padding-bottom: 20px;">Pour gagner en flexibilité, réduire les coûts de maintenance physique et accélérer l'innovation logicielle.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Le cloud est-il sécurisé ? <i data-lucide="plus"></i></div>
-                <div class="faq-answer"><p style="padding-bottom: 20px;">Oui, les fournisseurs cloud investissent des milliards dans la sécurité, surpassant souvent les capacités des centres de données privés.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Quels sont les avantages du cloud hybride ? <i data-lucide="plus"></i></div>
-                <div class="faq-answer"><p style="padding-bottom: 20px;">Il permet de garder les données ultra-sensibles en local tout en profitant de la puissance du cloud public pour le reste.</p></div>
-            </div>
+        <h2 class="section-title">Questions fréquentes</h2>
+        <div class="faq-container">
+            <details>
+                <summary>Pourquoi migrer vers le cloud ? <i data-lucide="chevron-down"></i></summary>
+                <p>Pour la flexibilité, la scalabilité et la réduction des coûts d'infrastructure physique.</p>
+            </details>
+            <details>
+                <summary>Le cloud est-il sécurisé ? <i data-lucide="chevron-down"></i></summary>
+                <p>Oui, avec les protocoles de chiffrement modernes et une gestion stricte des accès.</p>
+            </details>
         </div>
     </section>
 
-    <section>
-        <div class="cta-box" data-aos="zoom-out">
-            <h2>Prêt pour le futur ?</h2>
-            <p style="margin-bottom: 40px; font-size: 1.2rem; opacity: 0.9;">Transformez votre infrastructure avec le cloud dès aujourd'hui.</p>
-            <a href="#" class="btn btn-white btn">Commencer maintenant</a>
-        </div>
-    </section>
+    <div class="cta">
+        <h2>Transformez votre infrastructure</h2>
+        <p style="margin-bottom: 30px;">Prêt à passer au niveau supérieur ?</p>
+        <a href="Contact.html" class="btn btn-white">Commencer maintenant</a>
+    </div>
 
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <div class="footer-logo">CASANET</div>
-                <p style="color: var(--text-muted);">Simplifier la complexité technologique pour les entreprises de demain.</p>
-            </div>
-            <div>
-                <h4>Navigation</h4>
-                <p style="margin-top:10px">Accueil</p>
-                <p>Blog</p>
-                <p>Solutions</p>
-            </div>
-            <div>
-                <h4>Social</h4>
-                <p style="margin-top:10px">LinkedIn</p>
-                <p>Twitter</p>
-                <p>GitHub</p>
-            </div>
-            <div>
-                <h4>Newsletter</h4>
-                <input type="text" placeholder="Email" style="width:100%; padding: 10px; margin-top:10px; border-radius: 8px; border: 1px solid #ddd;">
-            </div>
-        </div>
-        <p style="text-align: center; color: var(--text-muted);">© 2026 Casanet Cloud. Tous droits réservés.</p>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Init animations
-        AOS.init({ duration: 1000, once: true });
-        
-        // Init icons
         lucide.createIcons();
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(item => {
-            item.addEventListener('click', () => {
-                const answer = item.nextElementSibling;
-                const icon = item.querySelector('i');
-                if (answer.style.height === 'auto' || answer.style.height === '80px') {
-                    answer.style.height = '0';
-                    icon.style.transform = 'rotate(0deg)';
-                } else {
-                    answer.style.height = '80px';
-                    icon.style.transform = 'rotate(45deg)';
-                }
-            });
-        });
     </script>
 </body>
 </html>
