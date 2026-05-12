@@ -8,19 +8,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        /* Styles spécifiques au Blog pour compléter style.css */
+        .blog-hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('hero-bg.jpg') center/cover no-repeat;
+            padding: 100px 0 60px 0;
+            text-align: center;
+        }
         .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 60px 0; }
+        
+        /* Conteneur d'image avec effet premium (Glassmorphism) */
         .intro-img-container { 
-            background: rgba(224, 242, 254, 0.5); border-radius: 30px; padding: 1.5rem; 
-            backdrop-filter: blur(10px); border: 1px solid rgba(0, 98, 255, 0.1);
+            background: rgba(224, 242, 254, 0.5); 
+            border-radius: 30px; 
+            padding: 1.5rem; 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 98, 255, 0.1);
             box-shadow: 0 20px 40px rgba(0,0,0,0.05);
         }
         .intro-img { width: 100%; border-radius: 20px; display: block; object-fit: cover; }
+        
+        .timeline { max-width: 800px; margin: 40px auto; }
+        .step { display: flex; gap: 2rem; margin-bottom: 2rem; align-items: flex-start; }
+        .step-num { 
+            background: var(--primary); color: white; min-width: 40px; height: 40px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; 
+        }
+
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
-        .stat-item { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 2rem; border-radius: 15px; text-align: center; }
+        .stat-item { background: var(--primary); color: white; padding: 2rem; border-radius: 15px; text-align: center; }
+        .stat-item h4 { font-size: 2rem; margin-bottom: 5px; }
+
         .faq-container { max-width: 800px; margin: 40px auto; }
         details { background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; border: 1px solid #e2e8f0; cursor: pointer; }
-        summary { font-weight: 700; color: var(--dark); display: flex; justify-content: space-between; align-items: center; }
-        @media (max-width: 850px) { .section-intro, .stats-grid { grid-template-columns: 1fr; } }
+        summary { font-weight: 700; color: var(--dark); outline: none; display: flex; justify-content: space-between; align-items: center; }
+        
+        .cta-section { 
+            background: var(--primary); color: white; padding: 80px 2rem; border-radius: 30px; 
+            text-align: center; margin: 40px auto; max-width: 1100px;
+        }
+        .btn-white { background: white; color: var(--primary); padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; transition: 0.3s; }
+        .btn-white:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        @media (max-width: 850px) {
+            .section-intro, .stats-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -32,7 +63,6 @@
         <ul class="nav-links">
             <li><a href="index.html" class="nav-item">Accueil</a></li>
             <li><a href="blog.html" class="nav-item active">Blog</a></li>
-            <li><a href="#propos" class="nav-item">À Propos</a></li> 
             <li><a href="contact.html" class="nav-item">Contact</a></li>
         </ul>
     </nav>
@@ -41,6 +71,7 @@
         <div class="container">
             <h1 class="headline">Move to <span class="gradient-text">Cloud</span></h1>
             <p class="hero-subtitle">Réussir sa stratégie cloud sans créer de complexité supplémentaire.</p>
+            <p style="max-width: 800px; margin: 0 auto 30px auto; color: var(--text);">Les entreprises modernisent leurs infrastructures grâce au cloud computing, à la data et à l’intelligence artificielle afin d’améliorer leurs performances tout en simplifiant leur architecture numérique.</p>
             <div class="hero-btns">
                 <a href="#intro" class="btn-primary">Découvrir l'article</a>
             </div>
@@ -53,27 +84,53 @@
                 <div>
                     <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Vision Stratégique</span>
                     <h2 class="section-title" style="text-align: left; margin-top: 10px;">Pourquoi le cloud est devenu indispensable ?</h2>
-                    <p>Le cloud computing permet aux entreprises d’accéder à des infrastructures flexibles, sécurisées et évolutives.</p>
+                    <p>Le cloud computing permet aux entreprises d’accéder à des infrastructures flexibles, sécurisées et évolutives. Il facilite la collaboration, réduit les coûts et accélère la transformation digitale. Cependant, une migration mal organisée peut créer une architecture complexe.</p>
                 </div>
+                
                 <div class="intro-img-container">
-                    <img src="dashboard-cloud.png" alt="Dashboard" class="intro-img">
+                    <img src="dashboard-cloud.png" alt="Cloud Analytics Dashboard" class="intro-img">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="propos" class="section" style="background: #f8fafc;">
+    <section class="section" style="background: #f8fafc;">
         <div class="container">
-            <div class="about-grid">
-                <div>
-                    <h2 class="section-title" style="text-align: left;">À propos de Casanet</h2>
-                    <p>Filiale technologique de <strong>Maroc Telecom</strong>, Casanet est un pionnier du digital au Maroc. Nous transformons les défis technologiques en opportunités de croissance.</p>
+            <h2 class="section-title" style="text-align: center;">Les défis du cloud</h2>
+            <div class="grid">
+                <div class="card">
+                    <div style="background: #e0f2fe; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i data-lucide="alert-triangle"></i>
+                    </div>
+                    <h3>Complexité</h3>
+                    <p>Les anciennes infrastructures sont parfois difficiles à intégrer au cloud.</p>
                 </div>
-                <div>
-                    <div class="value-card"><i data-lucide="shield-check"></i> <span>Sécurité Maximale</span></div>
-                    <div class="value-card"><i data-lucide="zap"></i> <span>Innovation Agile</span></div>
-                    <div class="value-card"><i data-lucide="users"></i> <span>Support Local 24/7</span></div>
+                <div class="card">
+                    <div style="background: #e0f2fe; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i data-lucide="lock"></i>
+                    </div>
+                    <h3>Sécurité</h3>
+                    <p>La protection des données sensibles reste essentielle et prioritaire.</p>
                 </div>
+                <div class="card">
+                    <div style="background: #e0f2fe; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i data-lucide="trending-down"></i>
+                    </div>
+                    <h3>Coûts cachés</h3>
+                    <p>Une mauvaise gestion peut augmenter les dépenses imprévues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--primary); color: white;">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; color: white;">Le cloud, la Data et l’IA</h2>
+            <div class="stats-grid">
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>85%</h4><p>Usage Cloud</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>60%</h4><p>Réduction Coûts</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>3x</h4><p>Plus rapide</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>90%</h4><p>Collaboration</p></div>
             </div>
         </div>
     </section>
@@ -83,15 +140,26 @@
             <h2 class="section-title" style="text-align: center;">Questions fréquentes</h2>
             <div class="faq-container">
                 <details>
-                    <summary>Pourquoi choisir Casanet ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
-                    <p style="padding-top: 15px;">Pour notre expertise certifiée et notre infrastructure hébergée au Maroc.</p>
+                    <summary>Pourquoi migrer vers le cloud ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
+                    <p style="padding-top: 15px; color: var(--text);">Pour gagner en agilité, en sécurité et réduire les coûts liés à la maintenance physique des serveurs.</p>
+                </details>
+                <details>
+                    <summary>Le cloud est-il sécurisé ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
+                    <p style="padding-top: 15px; color: var(--text);">Oui, les fournisseurs cloud majeurs investissent massivement dans des protocoles de sécurité de pointe.</p>
                 </details>
             </div>
         </div>
     </section>
 
+    <div class="container" style="padding-bottom: 80px;">
+        <div class="cta-section">
+            <h2 style="font-size: 2.5rem;">Prêt pour la transformation ?</h2>
+            <a href="contact.html" class="btn-white">Contactez-nous</a>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 Casanet | Filiale de Maroc Telecom. Tous droits réservés.</p>
+        <p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
     </footer>
 
     <script>
