@@ -15,7 +15,18 @@
             text-align: center;
         }
         .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 60px 0; }
-        .intro-img { background: #e0f2fe; border-radius: 24px; padding: 2rem; width: 100%; height: auto; }
+        
+        /* Conteneur d'image avec effet premium (Glassmorphism) */
+        .intro-img-container { 
+            position: relative;
+            background: rgba(224, 242, 254, 0.5); 
+            border-radius: 30px; 
+            padding: 1.5rem; 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 98, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+        .intro-img { width: 100%; border-radius: 20px; display: block; object-fit: cover; }
         
         .timeline { max-width: 800px; margin: 40px auto; }
         .step { display: flex; gap: 2rem; margin-bottom: 2rem; align-items: flex-start; }
@@ -30,13 +41,14 @@
 
         .faq-container { max-width: 800px; margin: 40px auto; }
         details { background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; border: 1px solid #e2e8f0; cursor: pointer; }
-        summary { font-weight: 700; color: var(--dark); outline: none; }
+        summary { font-weight: 700; color: var(--dark); outline: none; display: flex; justify-content: space-between; align-items: center; }
         
         .cta-section { 
             background: var(--primary); color: white; padding: 80px 2rem; border-radius: 30px; 
             text-align: center; margin: 40px auto; max-width: 1100px;
         }
-        .btn-white { background: white; color: var(--primary); padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; }
+        .btn-white { background: white; color: var(--primary); padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; transition: 0.3s; }
+        .btn-white:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
         @media (max-width: 850px) {
             .section-intro, .stats-grid { grid-template-columns: 1fr; }
@@ -71,10 +83,17 @@
         <div class="container">
             <div class="section-intro">
                 <div>
-                    <h2 class="section-title" style="text-align: left;">Pourquoi le cloud est devenu indispensable ?</h2>
+                    <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Vision Stratégique</span>
+                    <h2 class="section-title" style="text-align: left; margin-top: 10px;">Pourquoi le cloud est devenu indispensable ?</h2>
                     <p>Le cloud computing permet aux entreprises d’accéder à des infrastructures flexibles, sécurisées et évolutives. Il facilite la collaboration, réduit les coûts et accélère la transformation digitale. Cependant, une migration mal organisée peut créer une architecture complexe.</p>
                 </div>
-                <img src="https://illustrations.popsy.co/amber/data-analysis.svg" alt="Dashboard" class="intro-img">
+                
+                <div class="intro-img-container">
+                    <img src="dashboard-cloud.png" alt="Cloud Analytics Dashboard" class="intro-img">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); box-shadow: 0 10px 20px rgba(0,0,0,0.2); cursor: pointer;">
+                        <i data-lucide="play-circle" style="width: 30px; height: 30px;"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -84,17 +103,23 @@
             <h2 class="section-title" style="text-align: center;">Les défis du cloud</h2>
             <div class="grid">
                 <div class="card">
-                    <i data-lucide="alert-triangle"></i>
+                    <div style="background: #e0f2fe; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i data-lucide="alert-triangle"></i>
+                    </div>
                     <h3>Complexité</h3>
                     <p>Les anciennes infrastructures sont parfois difficiles à intégrer au cloud.</p>
                 </div>
                 <div class="card">
-                    <i data-lucide="lock"></i>
+                    <div style="background: #e0f2fe; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i data-lucide="lock"></i>
+                    </div>
                     <h3>Sécurité</h3>
                     <p>La protection des données sensibles reste essentielle et prioritaire.</p>
                 </div>
                 <div class="card">
-                    <i data-lucide="trending-down"></i>
+                    <div style="background: #e0f2fe; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i data-lucide="trending-down"></i>
+                    </div>
                     <h3>Coûts cachés</h3>
                     <p>Une mauvaise gestion peut augmenter les dépenses imprévues.</p>
                 </div>
@@ -102,59 +127,38 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="background: var(--primary); color: white;">
         <div class="container">
-            <h2 class="section-title" style="text-align: center;">Comment réussir sa migration ?</h2>
-            <div class="timeline">
-                <div class="step">
-                    <div class="step-num">1</div>
-                    <div><h4>Audit de l'infrastructure</h4><p>Analyser les serveurs, applications et données existantes.</p></div>
-                </div>
-                <div class="step">
-                    <div class="step-num">2</div>
-                    <div><h4>Migration progressive</h4><p>Déplacer les services étape par étape pour réduire les risques.</p></div>
-                </div>
-                <div class="step">
-                    <div class="step-num">3</div>
-                    <div><h4>Automatisation</h4><p>Utiliser DevOps et l'IA pour simplifier les processus.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: #e0f2fe;">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center;">Le cloud au service de la Data et de l’IA</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto;">Les plateformes cloud permettent d’utiliser l’intelligence artificielle sans investir dans des infrastructures coûteuses.</p>
+            <h2 class="section-title" style="text-align: center; color: white;">Le cloud, la Data et l’IA</h2>
             <div class="stats-grid">
-                <div class="stat-item"><h4>85%</h4><p>Usage Cloud</p></div>
-                <div class="stat-item"><h4>60%</h4><p>Réduction Coûts</p></div>
-                <div class="stat-item"><h4>3x</h4><p>Plus rapide</p></div>
-                <div class="stat-item"><h4>90%</h4><p>Collaboration</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>85%</h4><p>Usage Cloud</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>60%</h4><p>Réduction Coûts</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>3x</h4><p>Plus rapide</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>90%</h4><p>Collaboration</p></div>
             </div>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title" style="text-align: center;">FAQ</h2>
+            <h2 class="section-title" style="text-align: center;">Questions fréquentes</h2>
             <div class="faq-container">
                 <details>
-                    <summary>Pourquoi migrer vers le cloud ?</summary>
-                    <p style="padding-top: 10px;">Pour gagner en agilité, en sécurité et réduire les coûts liés à la maintenance physique des serveurs.</p>
+                    <summary>Pourquoi migrer vers le cloud ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
+                    <p style="padding-top: 15px; color: var(--text);">Pour gagner en agilité, en sécurité et réduire les coûts liés à la maintenance physique des serveurs.</p>
                 </details>
                 <details>
-                    <summary>Le cloud est-il sécurisé ?</summary>
-                    <p style="padding-top: 10px;">Oui, les fournisseurs cloud utilisent des protocoles de sécurité plus avancés que la plupart des solutions locales.</p>
+                    <summary>Le cloud est-il sécurisé ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
+                    <p style="padding-top: 15px; color: var(--text);">Oui, les fournisseurs cloud majeurs investissent massivement dans des protocoles de sécurité de pointe.</p>
                 </details>
             </div>
         </div>
     </section>
 
-    <div class="container">
+    <div class="container" style="padding-bottom: 80px;">
         <div class="cta-section">
-            <h2>Transformez votre infrastructure avec le cloud.</h2>
-            <a href="contact.html" class="btn-white">Commencer maintenant</a>
+            <h2 style="font-size: 2.5rem;">Prêt pour la transformation ?</h2>
+            <a href="contact.html" class="btn-white">Contactez-nous</a>
         </div>
     </div>
 
