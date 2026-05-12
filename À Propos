@@ -3,57 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Move to Cloud - Casanet</title>
+    <title>À Propos | Casanet Blog</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Styles existants */
-        .blog-hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('hero-bg.jpg') center/cover no-repeat;
-            padding: 100px 0 60px 0;
+        .about-hero {
+            padding: 120px 0 60px 0;
             text-align: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
         }
-        .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 60px 0; }
-        .intro-img-container { 
-            background: rgba(224, 242, 254, 0.5); 
-            border-radius: 30px; 
-            padding: 1.5rem; 
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 98, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 40px;
         }
-        .intro-img { width: 100%; border-radius: 20px; display: block; object-fit: cover; }
-        
-        /* Nouvelle Section À Propos */
-        .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
-        .value-tag { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-weight: 600; color: var(--primary); }
-        .value-tag i { width: 20px; }
-
-        .timeline { max-width: 800px; margin: 40px auto; }
-        .step { display: flex; gap: 2rem; margin-bottom: 2rem; align-items: flex-start; }
-        .step-num { 
-            background: var(--primary); color: white; min-width: 40px; height: 40px; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; 
+        .about-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
-
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
-        .stat-item { background: var(--primary); color: white; padding: 2rem; border-radius: 15px; text-align: center; }
-        .stat-item h4 { font-size: 2rem; margin-bottom: 5px; }
-
-        .faq-container { max-width: 800px; margin: 40px auto; }
-        details { background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; border: 1px solid #e2e8f0; cursor: pointer; }
-        summary { font-weight: 700; color: var(--dark); outline: none; display: flex; justify-content: space-between; align-items: center; }
-        
-        .cta-section { 
-            background: var(--primary); color: white; padding: 80px 2rem; border-radius: 30px; 
-            text-align: center; margin: 40px auto; max-width: 1100px;
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 98, 255, 0.08);
         }
-        .btn-white { background: white; color: var(--primary); padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; transition: 0.3s; }
-        .btn-white:hover { transform: scale(1.05); }
-
-        @media (max-width: 850px) {
-            .section-intro, .stats-grid, .about-grid { grid-template-columns: 1fr; }
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .about-card h3 {
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-size: 1.4rem;
+        }
+        .about-card p {
+            color: var(--text);
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -65,103 +63,65 @@
         </div>
         <ul class="nav-links">
             <li><a href="index.html" class="nav-item">Accueil</a></li>
-            <li><a href="blog.html" class="nav-item active">Blog</a></li>
+            <li><a href="blog.html" class="nav-item">Blog</a></li>
+            <li><a href="apropos.html" class="nav-item active">À Propos</a></li>
             <li><a href="contact.html" class="nav-item">Contact</a></li>
         </ul>
     </nav>
 
-    <header class="blog-hero">
+    <header class="about-hero">
         <div class="container">
-            <h1 class="headline">Move to <span class="gradient-text">Cloud</span></h1>
-            <p class="hero-subtitle">Réussir sa stratégie cloud sans créer de complexité supplémentaire.</p>
-            <div class="hero-btns">
-                <a href="#intro" class="btn-primary">Découvrir l'article</a>
-            </div>
+            <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.9rem;">Notre Mission</span>
+            <h1 class="headline" style="margin-top: 15px;">À propos du <span class="gradient-text">Blog</span></h1>
+            <p class="hero-subtitle" style="max-width: 700px; margin: 0 auto;">
+                Accompagner les entreprises dans leur transformation digitale à travers une expertise pointue en Cloud, Data et Intelligence Artificielle.
+            </p>
         </div>
     </header>
-
-    <section id="intro" class="section">
-        <div class="container">
-            <div class="section-intro">
-                <div>
-                    <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">Vision Stratégique</span>
-                    <h2 class="section-title" style="text-align: left; margin-top: 10px;">Pourquoi le cloud est devenu indispensable ?</h2>
-                    <p>Le cloud computing permet aux entreprises d’accéder à des infrastructures flexibles, sécurisées et évolutives. Il facilite la collaboration, réduit les coûts et accélère la transformation digitale.</p>
-                </div>
-                <div class="intro-img-container">
-                    <img src="dashboard-cloud.png" alt="Cloud Analytics Dashboard" class="intro-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: #f8fafc;">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center;">Les défis du cloud</h2>
-            <div class="grid">
-                <div class="card">
-                    <i data-lucide="alert-triangle"></i>
-                    <h3>Complexité</h3>
-                    <p>Les anciennes infrastructures sont parfois difficiles à intégrer au cloud.</p>
-                </div>
-                <div class="card">
-                    <i data-lucide="lock"></i>
-                    <h3>Sécurité</h3>
-                    <p>La protection des données sensibles reste essentielle et prioritaire.</p>
-                </div>
-                <div class="card">
-                    <i data-lucide="trending-down"></i>
-                    <h3>Coûts cachés</h3>
-                    <p>Une mauvaise gestion peut augmenter les dépenses imprévues.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section class="section">
         <div class="container">
             <div class="about-grid">
-                <div>
-                    <h2 class="section-title" style="text-align: left;">À propos de Casanet</h2>
-                    <p>Filiale technologique de <strong>Maroc Telecom</strong>, Casanet est un acteur majeur de la transformation digitale au Maroc. Nous accompagnons les entreprises dans l'adoption des technologies Cloud, Data et IA pour booster leur croissance.</p>
-                    <p style="margin-top: 15px;">Notre expertise repose sur des années d'innovation et un support technique de premier ordre, garantissant à nos clients une transition fluide vers le numérique.</p>
+                <!-- Move to Cloud -->
+                <div class="about-card">
+                    <div class="icon-box"><i data-lucide="cloud"></i></div>
+                    <h3>Move to Cloud</h3>
+                    <p>Découvrez comment les entreprises modernisent leur infrastructure grâce aux technologies cloud pour plus d'agilité.</p>
                 </div>
-                <div style="background: #f0f7ff; padding: 30px; border-radius: 20px;">
-                    <h3 style="margin-bottom: 20px;">Nos Valeurs</h3>
-                    <div class="value-tag"><i data-lucide="check-circle"></i> Innovation Continue</div>
-                    <div class="value-tag"><i data-lucide="check-circle"></i> Sécurité Maximale</div>
-                    <div class="value-tag"><i data-lucide="check-circle"></i> Accompagnement Client</div>
-                    <div class="value-tag"><i data-lucide="check-circle"></i> Excellence Technique</div>
+
+                <!-- Data & Performance -->
+                <div class="about-card">
+                    <div class="icon-box"><i data-lucide="bar-chart-big"></i></div>
+                    <h3>Data & Performance</h3>
+                    <p>Le cloud permet de mieux gérer les données, améliorer l’analyse et accélérer la prise de décision stratégique.</p>
                 </div>
+
+                <!-- Innovation & IA -->
+                <div class="about-card">
+                    <div class="icon-box"><i data-lucide="cpu"></i></div>
+                    <h3>Innovation & IA</h3>
+                    <p>L’intelligence artificielle et le cloud créent de nouvelles opportunités pour les entreprises digitales de demain.</p>
+                </div>
+
+                <!-- Sécurité -->
+                <div class="about-card">
+                    <div class="icon-box"><i data-lucide="shield-check"></i></div>
+                    <h3>Sécurité & Infrastructure</h3>
+                    <p>Des solutions sécurisées et flexibles pour accompagner sereinement chaque étape de votre transformation numérique.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 24px; text-align: center;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Solutions Technologiques</h3>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--text);">
+                    Avec des acteurs comme <strong>Casanet</strong> et <strong>Microsoft</strong>, les entreprises bénéficient d’outils innovants pour réussir leur transition vers le cloud et rester compétitives sur le marché marocain.
+                </p>
             </div>
         </div>
     </section>
-
-    <section class="section" style="background: #f8fafc;">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center;">Questions fréquentes</h2>
-            <div class="faq-container">
-                <details>
-                    <summary>Pourquoi choisir Casanet ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
-                    <p style="padding-top: 15px; color: var(--text);">En tant que filiale de Maroc Telecom, nous offrons une infrastructure robuste, une proximité locale et une expertise reconnue dans le Cloud.</p>
-                </details>
-                <details>
-                    <summary>Le cloud est-il sécurisé ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
-                    <p style="padding-top: 15px; color: var(--text);">Oui, nous utilisons des standards de sécurité internationaux pour protéger chaque donnée migrée sur nos serveurs.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <div class="container" style="padding-bottom: 80px;">
-        <div class="cta-section">
-            <h2 style="font-size: 2.5rem;">Prêt pour la transformation ?</h2>
-            <a href="contact.html" class="btn-white">Contactez-nous</a>
-        </div>
-    </div>
 
     <footer>
-        <p>&copy; 2026 Casanet. Filiale de Maroc Telecom. Tous droits réservés.</p>
+        <p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
     </footer>
 
     <script>
