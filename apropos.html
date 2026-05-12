@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À Propos | Casanet Blog</title>
+    <title>À Propos | Casanet</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -47,11 +47,20 @@
         .about-card h3 {
             margin-bottom: 12px;
             color: var(--dark);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
         .about-card p {
             color: var(--text);
             line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .vision-section {
+            margin-top: 60px;
+            padding: 50px;
+            background: var(--dark);
+            color: white;
+            border-radius: 30px;
+            text-align: center;
         }
     </style>
 </head>
@@ -71,10 +80,10 @@
 
     <header class="about-hero">
         <div class="container">
-            <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.9rem;">Notre Mission</span>
-            <h1 class="headline" style="margin-top: 15px;">À propos du <span class="gradient-text">Blog</span></h1>
-            <p class="hero-subtitle" style="max-width: 700px; margin: 0 auto;">
-                Accompagner les entreprises dans leur transformation digitale à travers une expertise pointue en Cloud, Data et Intelligence Artificielle.
+            <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Expertise Numérique</span>
+            <h1 class="headline" style="margin-top: 15px;">À propos de <span class="gradient-text">Casanet</span></h1>
+            <p class="hero-subtitle" style="max-width: 800px; margin: 0 auto;">
+                Filiale de Maroc Telecom spécialisée dans les services numériques et la transformation digitale.
             </p>
         </div>
     </header>
@@ -82,39 +91,43 @@
     <section class="section">
         <div class="container">
             <div class="about-grid">
-                <!-- Move to Cloud -->
+                <!-- Qui sommes-nous -->
+                <div class="about-card">
+                    <div class="icon-box"><i data-lucide="globe"></i></div>
+                    <h3>Qui sommes-nous ?</h3>
+                    <p>Casanet est une filiale de Maroc Telecom spécialisée dans les services numériques, les solutions IT et la transformation digitale des entreprises.</p>
+                </div>
+
+                <!-- Expertise Cloud -->
                 <div class="about-card">
                     <div class="icon-box"><i data-lucide="cloud"></i></div>
-                    <h3>Move to Cloud</h3>
-                    <p>Découvrez comment les entreprises modernisent leur infrastructure grâce aux technologies cloud pour plus d'agilité.</p>
+                    <h3>Expertise Cloud & Infrastructure</h3>
+                    <p>Nous accompagnons les entreprises dans leur transition vers le cloud grâce à des infrastructures performantes et des solutions sécurisées.</p>
                 </div>
 
-                <!-- Data & Performance -->
+                <!-- Data & Innovation -->
                 <div class="about-card">
-                    <div class="icon-box"><i data-lucide="bar-chart-big"></i></div>
-                    <h3>Data & Performance</h3>
-                    <p>Le cloud permet de mieux gérer les données, améliorer l’analyse et accélérer la prise de décision stratégique.</p>
-                </div>
-
-                <!-- Innovation & IA -->
-                <div class="about-card">
-                    <div class="icon-box"><i data-lucide="cpu"></i></div>
-                    <h3>Innovation & IA</h3>
-                    <p>L’intelligence artificielle et le cloud créent de nouvelles opportunités pour les entreprises digitales de demain.</p>
+                    <div class="icon-box"><i data-lucide="database"></i></div>
+                    <h3>Data & Innovation</h3>
+                    <p>Nous aidons les organisations à exploiter leurs données et à intégrer des technologies comme l'IA pour booster leur croissance.</p>
                 </div>
 
                 <!-- Sécurité -->
                 <div class="about-card">
                     <div class="icon-box"><i data-lucide="shield-check"></i></div>
-                    <h3>Sécurité & Infrastructure</h3>
-                    <p>Des solutions sécurisées et flexibles pour accompagner sereinement chaque étape de votre transformation numérique.</p>
+                    <h3>Sécurité & Connectivité</h3>
+                    <p>Grâce à notre expertise réseau et cybersécurité, nous garantissons des solutions fiables adaptées aux besoins modernes.</p>
                 </div>
             </div>
 
-            <div style="margin-top: 60px; padding: 40px; background: #f8fafc; border-radius: 24px; text-align: center;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Solutions Technologiques</h3>
-                <p style="max-width: 800px; margin: 0 auto; color: var(--text);">
-                    Avec des acteurs comme <strong>Casanet</strong> et <strong>Microsoft</strong>, les entreprises bénéficient d’outils innovants pour réussir leur transition vers le cloud et rester compétitives sur le marché marocain.
+            <!-- Vision -->
+            <div class="vision-section">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-radius: 50%; margin-bottom: 20px;">
+                    <i data-lucide="rocket" style="color: white;"></i>
+                </div>
+                <h2 style="font-size: 2rem; margin-bottom: 15px;">Notre Vision</h2>
+                <p style="max-width: 750px; margin: 0 auto; font-size: 1.1rem; opacity: 0.9;">
+                    Contribuer à la transformation digitale des entreprises marocaines et africaines en proposant des solutions technologiques innovantes et performantes.
                 </p>
             </div>
         </div>
