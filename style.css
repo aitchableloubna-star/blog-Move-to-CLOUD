@@ -58,3 +58,28 @@ body { color: var(--text); line-height: 1.6; background-color: white; scroll-beh
 .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 8px; }
 
 footer { padding: 40px; text-align: center; border-top: 1px solid #eee; }
+/* --- AJOUT POUR LA SECTION A PROPOS --- */
+.about-grid { 
+    display: grid; 
+    grid-template-columns: 1.2fr 0.8fr; 
+    gap: 4rem; 
+    align-items: center; 
+}
+
+.value-card { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    background: white; 
+    padding: 15px; 
+    border-radius: 12px; 
+    margin-bottom: 15px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    border: 1px solid #e2e8f0;
+}
+
+.value-card i { color: var(--primary); }
+
+@media (max-width: 850px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
