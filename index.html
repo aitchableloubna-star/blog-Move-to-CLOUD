@@ -7,8 +7,61 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* --- LE CERCLE INTERACTIF (BLEU CLAIR) --- */
+        .cursor-follower {
+            width: 35px;
+            height: 35px;
+            background-color: rgba(77, 166, 255, 0.15); /* Bleu clair transparent */
+            border: 2px solid rgba(77, 166, 255, 0.5);   /* Bordure bleu clair */
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none; 
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        /* --- DESIGN DU BOUTON LUMINEUX --- */
+        .btn-primary {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #0062ff; /* Ton bleu actuel */
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 98, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #4da6ff; /* Devient bleu clair au toucher */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(77, 166, 255, 0.5); /* Effet lumineux */
+            letter-spacing: 0.5px;
+        }
+
+        /* Douceur du scroll quand on clique sur le lien */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Le cercle bleu clair qui suit la souris -->
+    <div class="cursor-follower"></div>
 
     <nav class="navbar">
         <div class="logo">
@@ -28,14 +81,15 @@
             <h1 class="headline">Simplifiez votre transition vers le <span class="gradient-text">cloud</span> avec Casanet</h1>
             <p class="hero-subtitle">Infrastructure agile et sécurisée pour l'avenir numérique du Maroc.</p>
             <div class="hero-btns">
-                <a href="blog.html" class="btn-primary">Découvrir nos solutions</a>
+                <!-- CORRECTION : Le lien pointe maintenant vers #solutions au lieu de blog.html -->
+                <a href="#solutions" class="btn-primary">Découvrir nos solutions</a>
             </div>
         </div>
     </header>
 
     <section id="solutions" class="section">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--dark);">Nos Solutions</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 40px; font-size: 2.5rem; color: #030712; font-weight: 800;">Nos Solutions</h2>
             <div class="grid">
                 <div class="card">
                     <i data-lucide="cloud-lightning"></i>
@@ -61,8 +115,23 @@
     </footer>
 
     <script>
-        // Cette ligne est cruciale pour afficher les icônes Lucide
+        // Initialisation des icônes Lucide
         lucide.createIcons();
+
+        // Logique du curseur bleu clair
+        const follower = document.querySelector('.cursor-follower');
+        let mouseX = 0;
+        let mouseY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // On utilise requestAnimationFrame pour une fluidité parfaite (60fps)
+            requestAnimationFrame(() => {
+                follower.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+            });
+        });
     </script>
 </body>
 </html>
