@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types de Cloud | Casanet Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* --- SYSTÈME INTERACTIF --- */
+        html { scroll-behavior: smooth; cursor: none; }
+        body { cursor: none; overflow-x: hidden; background: #ffffff; color: #1e293b; }
+
+        .cursor-follower {
+            width: 40px; height: 40px;
+            background-color: rgba(77, 166, 255, 0.2);
+            border-radius: 50%; position: fixed;
+            pointer-events: none; z-index: 9999;
+            left: 0; top: 0; transform: translate(-50%, -50%);
+            transition: transform 0.15s ease-out;
+        }
+
+        .cursor-dot {
+            width: 6px; height: 6px;
+            background-color: #4da6ff;
+            border-radius: 50%; position: fixed;
+            pointer-events: none; z-index: 10000;
+            left: 0; top: 0; transform: translate(-50%, -50%);
+        }
+
+        /* --- DESIGN DE L'ARTICLE --- */
+        .article-header {
+            padding: 160px 0 60px 0;
+            background: linear-gradient(to bottom, #f0f9ff, #ffffff);
+            text-align: center;
+        }
+
+        .category-tag {
+            color: #0062ff;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .article-main-img {
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+            margin: 0 auto 60px auto;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        .article-main-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 100px 20px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        .content-body h2 {
+            margin: 40px 0 20px 0;
+            color: #0f172a;
+        }
+
+        .content-body p {
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 40px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover { color: #0062ff; transform: translateX(-5px); }
+
+        @media (max-width: 850px) {
+            .cursor-follower, .cursor-dot { display: none; }
+            html, body { cursor: auto; }
+            .article-main-img { height: 300px; border-radius: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-follower"></div>
+    <div class="cursor-dot"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo-casanet.png" alt="Logo" class="site-logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-item">Accueil</a></li>
+            <li><a href="blog.html" class="nav-item active">Blog</a></li>
+            <li><a href="apropos.html" class="nav-item">À Propos</a></li> 
+            <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="article-header">
+        <div class="container">
+            <a href="blog.html" class="back-link"><i data-lucide="arrow-left"></i> Retour au blog</a>
+            <span class="category-tag">Infrastructure</span>
+            <h1 class="headline" style="max-width: 900px; margin: 0 auto;">Cloud public, privé et hybride : quelles différences ?</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="article-main-img">
+            <!-- Vous pouvez changer l'image ici -->
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1000" alt="Cloud Infrastructure">
+        </div>
+
+        <article class="content-body">
+            <p>Le cloud computing se décline principalement en trois modèles : <strong>le cloud public, le cloud privé et le cloud hybride</strong>. Chacun possède ses propres caractéristiques, avantages et limites, ce qui rend le choix stratégique pour les entreprises.</p>
+
+            <h2>Le Cloud Public</h2>
+            <p>Le cloud public est une infrastructure partagée entre plusieurs utilisateurs et gérée par un fournisseur externe. Il est très apprécié pour sa flexibilité et son faible coût, car les entreprises ne paient que ce qu’elles utilisent. Cependant, il peut offrir moins de contrôle sur les données sensibles.</p>
+
+            <h2>Le Cloud Privé</h2>
+            <p>Le cloud privé est dédié à une seule organisation. Il peut être hébergé sur site ou chez un fournisseur spécialisé. Ce modèle garantit un niveau de sécurité et de contrôle beaucoup plus élevé, ce qui le rend idéal pour les entreprises traitant des données sensibles ou soumises à des réglementations strictes. En contrepartie, il est plus coûteux à mettre en place et à maintenir.</p>
+
+            <h2>Le Cloud Hybride</h2>
+            <p>Le cloud hybride combine les deux approches. Il permet aux entreprises de profiter de la flexibilité du cloud public tout en gardant les données critiques dans un environnement privé sécurisé. C’est aujourd’hui l’un des modèles les plus utilisés, car il offre un bon équilibre entre performance, sécurité et coût.</p>
+
+            <p>En conclusion, le choix entre ces trois modèles dépend des besoins spécifiques de l’entreprise, de son budget, ainsi que de sa stratégie de gestion des données et de sécurité.</p>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const follower = document.querySelector('.cursor-follower');
+        const dot = document.querySelector('.cursor-dot');
+
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = `${e.clientX}px`;
+            dot.style.top = `${e.clientY}px`;
+            requestAnimationFrame(() => {
+                follower.style.left = `${e.clientX}px`;
+                follower.style.top = `${e.clientY}px`;
+            });
+        });
+
+        const interactables = document.querySelectorAll('a, button');
+        interactables.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
+            });
+            item.addEventListener('mouseleave', () => {
+                follower.style.transform = 'translate(-50%, -50%) scale(1)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.2)';
+            });
+        });
+    </script>
+</body>
+</html>
