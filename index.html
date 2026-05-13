@@ -9,12 +9,16 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* --- LE CERCLE INTERACTIF (BLEU CLAIR) --- */
+        /* --- CACHER LE CURSEUR PAR DÉFAUT --- */
+        html, body {
+            cursor: none; /* On cache la flèche standard */
+        }
+
+        /* --- LE CERCLE EXTÉRIEUR (SANS BORDURE) --- */
         .cursor-follower {
-            width: 35px;
-            height: 35px;
-            background-color: rgba(77, 166, 255, 0.15); /* Bleu clair transparent */
-            border: 2px solid rgba(77, 166, 255, 0.5);   /* Bordure bleu clair */
+            width: 40px;
+            height: 40px;
+            background-color: rgba(77, 166, 255, 0.2); /* Bleu clair très doux */
             border-radius: 50%;
             position: fixed;
             pointer-events: none; 
@@ -22,14 +26,28 @@
             left: 0;
             top: 0;
             transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out;
+            transition: transform 0.15s ease-out; /* Un peu de retard pour la fluidité */
+        }
+
+        /* --- LE POINT CENTRAL (REMPLACE LA FLÈCHE) --- */
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #4da6ff; /* Bleu clair vif */
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            transform: translate(-50%, -50%);
         }
 
         /* --- DESIGN DU BOUTON LUMINEUX --- */
         .btn-primary {
             display: inline-block;
             padding: 15px 30px;
-            background: #0062ff; /* Ton bleu actuel */
+            background: #0062ff;
             color: white;
             text-decoration: none;
             border-radius: 12px;
@@ -39,29 +57,25 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 98, 255, 0.2);
+            cursor: none; /* Assure que le curseur reste caché sur le bouton */
         }
 
         .btn-primary:hover {
-            background: #4da6ff; /* Devient bleu clair au toucher */
+            background: #4da6ff;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(77, 166, 255, 0.5); /* Effet lumineux */
-            letter-spacing: 0.5px;
+            box-shadow: 0 8px 25px rgba(77, 166, 255, 0.5);
         }
 
-        /* Douceur du scroll quand on clique sur le lien */
         html {
             scroll-behavior: smooth;
-        }
-
-        body {
-            overflow-x: hidden;
         }
     </style>
 </head>
 <body>
 
-    <!-- Le cercle bleu clair qui suit la souris -->
+    <!-- Les éléments du curseur personnalisé -->
     <div class="cursor-follower"></div>
+    <div class="cursor-dot"></div>
 
     <nav class="navbar">
         <div class="logo">
@@ -81,7 +95,6 @@
             <h1 class="headline">Simplifiez votre transition vers le <span class="gradient-text">cloud</span> avec Casanet</h1>
             <p class="hero-subtitle">Infrastructure agile et sécurisée pour l'avenir numérique du Maroc.</p>
             <div class="hero-btns">
-                <!-- CORRECTION : Le lien pointe maintenant vers #solutions au lieu de blog.html -->
                 <a href="#solutions" class="btn-primary">Découvrir nos solutions</a>
             </div>
         </div>
@@ -115,21 +128,36 @@
     </footer>
 
     <script>
-        // Initialisation des icônes Lucide
         lucide.createIcons();
 
-        // Logique du curseur bleu clair
         const follower = document.querySelector('.cursor-follower');
-        let mouseX = 0;
-        let mouseY = 0;
+        const dot = document.querySelector('.cursor-dot');
 
         window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+            const posX = e.clientX;
+            const posY = e.clientY;
             
-            // On utilise requestAnimationFrame pour une fluidité parfaite (60fps)
+            // Le point central suit instantanément
+            dot.style.left = `${posX}px`;
+            dot.style.top = `${posY}px`;
+
+            // Le grand cercle suit avec un léger délai pour l'effet fluide
             requestAnimationFrame(() => {
-                follower.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+                follower.style.left = `${posX}px`;
+                follower.style.top = `${posY}px`;
+            });
+        });
+
+        // Optionnel : Faire grossir le cercle quand on survole un bouton
+        const links = document.querySelectorAll('a, button');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
+            });
+            link.addEventListener('mouseleave', () => {
+                follower.style.transform = 'translate(-50%, -50%) scale(1)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.2)';
             });
         });
     </script>
