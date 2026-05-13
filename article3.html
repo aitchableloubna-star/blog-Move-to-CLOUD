@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Défis Migration Cloud | Casanet Blog</title>
+    <title>Défis Migration | Casanet Blog</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* --- SYSTÈME INTERACTIF --- */
+        /* --- STYLE IDENTIQUE ARTICLE 1 --- */
         html { scroll-behavior: smooth; cursor: none; }
-        body { cursor: none; overflow-x: hidden; background: #ffffff; color: #1e293b; }
+        body { cursor: none; overflow-x: hidden; background: #ffffff; color: #001f3f; }
 
         .cursor-follower {
             width: 40px; height: 40px;
-            background-color: rgba(77, 166, 255, 0.2);
+            background-color: rgba(255, 102, 102, 0.2);
             border-radius: 50%; position: fixed;
             pointer-events: none; z-index: 9999;
             left: 0; top: 0; transform: translate(-50%, -50%);
@@ -23,99 +23,68 @@
 
         .cursor-dot {
             width: 6px; height: 6px;
-            background-color: #4da6ff;
+            background-color: #ff6600;
             border-radius: 50%; position: fixed;
             pointer-events: none; z-index: 10000;
             left: 0; top: 0; transform: translate(-50%, -50%);
         }
 
-        /* --- DESIGN DE L'ARTICLE --- */
         .article-header {
             padding: 160px 0 60px 0;
-            background: linear-gradient(to bottom, #fff5f5, #ffffff);
+            background: linear-gradient(135deg, #fff0f5 0%, #ffffff 100%); /* Dégradé rose/blanc */
             text-align: center;
         }
 
         .category-tag {
-            color: #ef4444;
+            color: #ff007f; /* Rose */
             font-weight: 800;
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 2px;
-            display: block;
             margin-bottom: 15px;
+            display: block;
         }
 
         .article-main-img {
-            width: 100%;
-            max-width: 1000px;
-            height: 500px;
-            margin: 0 auto 60px auto;
-            border-radius: 40px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            width: 100%; max-width: 1000px; height: 500px;
+            margin: 0 auto 60px auto; border-radius: 40px;
+            overflow: hidden; box-shadow: 0 30px 60px rgba(0, 31, 63, 0.1);
         }
 
-        .article-main-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .article-main-img img { width: 100%; height: 100%; object-fit: cover; }
 
         .content-body {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px 100px 20px;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #334155;
+            max-width: 800px; margin: 0 auto; padding: 0 20px 100px 20px;
+            font-size: 1.2rem; line-height: 1.8;
         }
 
-        .content-body h2 {
-            margin: 40px 0 20px 0;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .content-body p {
-            margin-bottom: 30px;
-        }
-
+        .content-body h2 { color: #001f3f; margin-top: 40px; border-left: 5px solid #ff007f; padding-left: 15px; }
+        
         .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: #64748b;
-            text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 40px;
-            transition: 0.3s;
+            display: inline-flex; align-items: center; gap: 10px;
+            color: #ff6600; /* Orange */ text-decoration: none;
+            font-weight: 600; margin-bottom: 40px; transition: 0.3s;
         }
 
-        .back-link:hover { color: #0062ff; transform: translateX(-5px); }
+        .back-link:hover { transform: translateX(-5px); color: #ff007f; }
 
         @media (max-width: 850px) {
             .cursor-follower, .cursor-dot { display: none; }
             html, body { cursor: auto; }
-            .article-main-img { height: 300px; border-radius: 20px; }
+            .article-main-img { height: 300px; }
         }
     </style>
 </head>
 <body>
-
     <div class="cursor-follower"></div>
     <div class="cursor-dot"></div>
 
     <nav class="navbar">
-        <div class="logo">
-            <img src="logo-casanet.png" alt="Logo" class="site-logo">
-        </div>
+        <div class="logo"><img src="logo-casanet.png" alt="Logo" class="site-logo"></div>
         <ul class="nav-links">
             <li><a href="index.html" class="nav-item">Accueil</a></li>
             <li><a href="blog.html" class="nav-item active">Blog</a></li>
-            <li><a href="apropos.html" class="nav-item">À Propos</a></li> 
+            <li><a href="apropos.html" class="nav-item">À Propos</a></li>
             <li><a href="contact.html" class="nav-item">Contact</a></li>
         </ul>
     </nav>
@@ -123,65 +92,39 @@
     <header class="article-header">
         <div class="container">
             <a href="blog.html" class="back-link"><i data-lucide="arrow-left"></i> Retour au blog</a>
-            <span class="category-tag">Stratégie & Sécurité</span>
-            <h1 class="headline" style="max-width: 900px; margin: 0 auto;">Les défis de la migration vers le cloud</h1>
+            <span class="category-tag">Expertise Cloud</span>
+            <h1 class="headline">Les défis de la migration vers le cloud</h1>
         </div>
     </header>
 
     <main class="container">
         <div class="article-main-img">
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt="Cloud Challenges">
+            <img src="votre-image-migration.jpg" alt="Défis Migration">
         </div>
-
         <article class="content-body">
-            <p>La migration vers le cloud est une étape stratégique importante pour les entreprises, mais elle comporte aussi plusieurs défis qu’il ne faut pas négliger pour garantir le succès de la transformation digitale.</p>
+            <p>La migration vers le cloud est une étape stratégique, mais elle comporte plusieurs défis essentiels.</p>
+            
+            <h2>La sécurité des données</h2>
+            <p>Protéger les informations sensibles contre les cyberattaques lors du transfert nécessite des solutions de sécurité avancées.</p>
 
-            <h2><i data-lucide="shield-check"></i> La sécurité des données</h2>
-            <p>L’un des principaux enjeux est la sécurité des données. Lors du transfert vers le cloud, les entreprises doivent s’assurer que leurs informations sensibles sont correctement protégées contre les cyberattaques et les fuites de données. Cela nécessite des solutions de sécurité avancées et une gestion rigoureuse des accès.</p>
+            <h2>Compatibilité et Coûts</h2>
+            <p>Adapter les anciens systèmes et gérer l'utilisation des ressources est crucial pour éviter des coûts inattendus.</p>
 
-            <h2><i data-lucide="refresh-cw"></i> Compatibilité des systèmes</h2>
-            <p>Un autre défi majeur est la compatibilité des systèmes. Certaines applications ou infrastructures anciennes peuvent ne pas être immédiatement compatibles avec les environnements cloud. Cela peut nécessiter des adaptations techniques ou une refonte partielle des systèmes existants.</p>
-
-            <h2><i data-lucide="trending-down"></i> Gestion des coûts</h2>
-            <p>La gestion des coûts est également un point critique. Même si le cloud peut réduire les dépenses liées aux infrastructures physiques, une mauvaise utilisation des ressources peut entraîner des coûts inattendus et élevés.</p>
-
-            <h2><i data-lucide="map"></i> Planification stratégique</h2>
-            <p>Enfin, la migration vers le cloud nécessite une bonne planification stratégique. Sans une feuille de route claire, les entreprises risquent de rencontrer des interruptions de service, des pertes de données ou des problèmes de performance.</p>
-
-            <div style="background: #f8fafc; padding: 40px; border-radius: 20px; border-left: 5px solid #0062ff; margin-top: 50px;">
-                <p style="margin-bottom: 0; font-weight: 600;">C’est pourquoi il est fortement recommandé de s’appuyer sur des experts du domaine, comme des intégrateurs cloud ou des partenaires spécialisés, afin de garantir une transition fluide, sécurisée et efficace vers le cloud.</p>
-            </div>
+            <h2>Planification avec Casanet</h2>
+            <p>S’appuyer sur des experts comme Casanet garantit une transition fluide et sécurisée grâce à une feuille de route claire.</p>
         </article>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
-    </footer>
+    <footer><p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p></footer>
 
     <script>
         lucide.createIcons();
-
         const follower = document.querySelector('.cursor-follower');
         const dot = document.querySelector('.cursor-dot');
-
         window.addEventListener('mousemove', (e) => {
-            dot.style.left = `${e.clientX}px`;
-            dot.style.top = `${e.clientY}px`;
+            dot.style.left = `${e.clientX}px`; dot.style.top = `${e.clientY}px`;
             requestAnimationFrame(() => {
-                follower.style.left = `${e.clientX}px`;
-                follower.style.top = `${e.clientY}px`;
-            });
-        });
-
-        const interactables = document.querySelectorAll('a, button');
-        interactables.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
-            });
-            item.addEventListener('mouseleave', () => {
-                follower.style.transform = 'translate(-50%, -50%) scale(1)';
-                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.2)';
+                follower.style.left = `${e.clientX}px`; follower.style.top = `${e.clientY}px`;
             });
         });
     </script>
