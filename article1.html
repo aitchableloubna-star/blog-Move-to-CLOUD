@@ -8,12 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        /* --- SYSTÈME INTERACTIF (CURSOR & SCROLL) --- */
         html { scroll-behavior: smooth; cursor: none; }
-        body { cursor: none; overflow-x: hidden; background: #ffffff; color: #001f3f; } /* Navy Blue */
+        body { cursor: none; overflow-x: hidden; background: #ffffff; color: #1e293b; }
 
         .cursor-follower {
             width: 40px; height: 40px;
-            background-color: rgba(255, 0, 127, 0.2); /* Rose transparent */
+            background-color: rgba(77, 166, 255, 0.2);
             border-radius: 50%; position: fixed;
             pointer-events: none; z-index: 9999;
             left: 0; top: 0; transform: translate(-50%, -50%);
@@ -22,20 +23,21 @@
 
         .cursor-dot {
             width: 6px; height: 6px;
-            background-color: #ff6600; /* Orange */
+            background-color: #4da6ff;
             border-radius: 50%; position: fixed;
             pointer-events: none; z-index: 10000;
             left: 0; top: 0; transform: translate(-50%, -50%);
         }
 
+        /* --- DESIGN DE L'ARTICLE --- */
         .article-header {
             padding: 160px 0 60px 0;
-            background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
+            background: linear-gradient(to bottom, #f0f9ff, #ffffff);
             text-align: center;
         }
 
         .category-tag {
-            color: #ff6600; /* Orange */
+            color: #0062ff;
             font-weight: 800;
             text-transform: uppercase;
             font-size: 0.85rem;
@@ -45,26 +47,46 @@
         }
 
         .article-main-img {
-            width: 100%; max-width: 1000px; height: 500px;
-            margin: 0 auto 60px auto; border-radius: 40px;
-            overflow: hidden; box-shadow: 0 30px 60px rgba(0, 31, 63, 0.15);
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+            margin: 0 auto 60px auto;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
         }
 
-        .article-main-img img { width: 100%; height: 100%; object-fit: cover; }
+        .article-main-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         .content-body {
-            max-width: 800px; margin: 0 auto; padding: 0 20px 100px 20px;
-            font-size: 1.2rem; line-height: 1.8; color: #001f3f;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 100px 20px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        .content-body p {
+            margin-bottom: 30px;
         }
 
         .back-link {
-            display: inline-flex; align-items: center; gap: 10px;
-            color: #ff007f; /* Rose */
-            text-decoration: none; font-weight: 600;
-            margin-bottom: 40px; transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 40px;
+            transition: 0.3s;
         }
 
-        .back-link:hover { color: #ff6600; transform: translateX(-5px); }
+        .back-link:hover { color: #0062ff; transform: translateX(-5px); }
 
         @media (max-width: 850px) {
             .cursor-follower, .cursor-dot { display: none; }
@@ -74,15 +96,18 @@
     </style>
 </head>
 <body>
+
     <div class="cursor-follower"></div>
     <div class="cursor-dot"></div>
 
     <nav class="navbar">
-        <div class="logo"><img src="logo-casanet.png" alt="Logo" class="site-logo"></div>
+        <div class="logo">
+            <img src="logo-casanet.png" alt="Logo" class="site-logo">
+        </div>
         <ul class="nav-links">
             <li><a href="index.html" class="nav-item">Accueil</a></li>
             <li><a href="blog.html" class="nav-item active">Blog</a></li>
-            <li><a href="apropos.html" class="nav-item">À Propos</a></li> 
+            <li><a href="apropos.html" class="nav-item">À Propos</a></li>
             <li><a href="contact.html" class="nav-item">Contact</a></li>
         </ul>
     </nav>
@@ -99,22 +124,48 @@
         <div class="article-main-img">
             <img src="article1.png" alt="Transformation Digitale Cloud">
         </div>
+
         <article class="content-body">
-            <p><strong>Le cloud computing joue aujourd’hui un rôle fondamental dans la transformation digitale des entreprises.</strong> Il ne s’agit plus d’une technologie optionnelle, mais d’un moteur de modernisation.</p>
-            <p>Grâce au cloud, les entreprises accèdent à leurs données en tout lieu, favorisant le travail collaboratif et l’agilité face au marché.</p>
+            <p><strong>Le cloud computing joue aujourd’hui un rôle fondamental dans la transformation digitale des entreprises, quel que soit leur secteur d’activité.</strong> Il ne s’agit plus seulement d’une technologie optionnelle, mais d’un véritable moteur de modernisation des systèmes d’information.</p>
+
+            <p>Grâce au cloud, les entreprises peuvent accéder à leurs données et applications à tout moment, depuis n’importe quel endroit, ce qui favorise le travail collaboratif et la mobilité des équipes. Cette flexibilité permet également de répondre plus rapidement aux besoins du marché et d’adapter les services en temps réel.</p>
+
+            <p>Un autre avantage majeur du cloud est sa capacité à accélérer l’innovation. Les entreprises n’ont plus besoin d’investir massivement dans des infrastructures physiques coûteuses. Elles peuvent tester de nouvelles solutions, lancer des applications ou développer des services digitaux en quelques heures seulement.</p>
+
+            <p>Le cloud contribue aussi à améliorer la prise de décision grâce à l’analyse des données en temps réel. Les organisations peuvent exploiter de grandes quantités d’informations pour mieux comprendre leurs clients et optimiser leurs performances.</p>
+
+            <p>Enfin, les entreprises qui adoptent le cloud gagnent en compétitivité, car elles deviennent plus agiles, plus efficaces et mieux préparées face aux évolutions rapides du marché digital.</p>
         </article>
     </main>
 
-    <footer><p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p></footer>
+    <footer>
+        <p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
+    </footer>
 
     <script>
         lucide.createIcons();
+
         const follower = document.querySelector('.cursor-follower');
         const dot = document.querySelector('.cursor-dot');
+
         window.addEventListener('mousemove', (e) => {
-            dot.style.left = `${e.clientX}px`; dot.style.top = `${e.clientY}px`;
+            dot.style.left = `${e.clientX}px`;
+            dot.style.top = `${e.clientY}px`;
             requestAnimationFrame(() => {
-                follower.style.left = `${e.clientX}px`; follower.style.top = `${e.clientY}px`;
+                follower.style.left = `${e.clientX}px`;
+                follower.style.top = `${e.clientY}px`;
+            });
+        });
+
+        const interactables = document.querySelectorAll('a, button');
+        interactables.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
+            });
+            item.addEventListener('mouseleave', () => {
+                follower.style.transform = 'translate(-50%, -50%) scale(1)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.2)';
             });
         });
     </script>
