@@ -1,132 +1,173 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Défis Migration | Casanet Blog</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        /* --- STYLE IDENTIQUE ARTICLE 1 --- */
-        html { scroll-behavior: smooth; cursor: none; }
-        body { cursor: none; overflow-x: hidden; background: #ffffff; color: #001f3f; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Défis Migration | Casanet Blog</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+/* --- SYSTÈME INTERACTIF (CURSOR & SCROLL) --- */
+html { scroll-behavior: smooth; cursor: none; }
+body { cursor: none; overflow-x: hidden; background: #ffffff; color: #1e293b; }
 
-        .cursor-follower {
-            width: 40px; height: 40px;
-            background-color: rgba(255, 102, 102, 0.2);
-            border-radius: 50%; position: fixed;
-            pointer-events: none; z-index: 9999;
-            left: 0; top: 0; transform: translate(-50%, -50%);
-            transition: transform 0.15s ease-out;
-        }
+.cursor-follower {
+width: 40px; height: 40px;
+background-color: rgba(77, 166, 255, 0.2);
+border-radius: 50%; position: fixed;
+pointer-events: none; z-index: 9999;
+left: 0; top: 0; transform: translate(-50%, -50%);
+transition: transform 0.15s ease-out;
+}
 
-        .cursor-dot {
-            width: 6px; height: 6px;
-            background-color: #ff6600;
-            border-radius: 50%; position: fixed;
-            pointer-events: none; z-index: 10000;
-            left: 0; top: 0; transform: translate(-50%, -50%);
-        }
+.cursor-dot {
+width: 6px; height: 6px;
+background-color: #4da6ff;
+border-radius: 50%; position: fixed;
+pointer-events: none; z-index: 10000;
+left: 0; top: 0; transform: translate(-50%, -50%);
+}
 
-        .article-header {
-            padding: 160px 0 60px 0;
-            background: linear-gradient(135deg, #fff0f5 0%, #ffffff 100%); /* Dégradé rose/blanc */
-            text-align: center;
-        }
+/* --- DESIGN DE L'ARTICLE --- */
+.article-header {
+padding: 160px 0 60px 0;
+background: linear-gradient(to bottom, #f0f9ff, #ffffff);
+text-align: center;
+}
 
-        .category-tag {
-            color: #ff007f; /* Rose */
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            display: block;
-        }
+.category-tag {
+color: #0062ff;
+font-weight: 800;
+text-transform: uppercase;
+font-size: 0.85rem;
+letter-spacing: 2px;
+display: block;
+margin-bottom: 15px;
+}
 
-        .article-main-img {
-            width: 100%; max-width: 1000px; height: 500px;
-            margin: 0 auto 60px auto; border-radius: 40px;
-            overflow: hidden; box-shadow: 0 30px 60px rgba(0, 31, 63, 0.1);
-        }
+.article-main-img {
+width: 100%;
+max-width: 1000px;
+height: 500px;
+margin: 0 auto 60px auto;
+border-radius: 40px;
+overflow: hidden;
+box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
 
-        .article-main-img img { width: 100%; height: 100%; object-fit: cover; }
+.article-main-img img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
 
-        .content-body {
-            max-width: 800px; margin: 0 auto; padding: 0 20px 100px 20px;
-            font-size: 1.2rem; line-height: 1.8;
-        }
+.content-body {
+max-width: 800px;
+margin: 0 auto;
+padding: 0 20px 100px 20px;
+font-size: 1.2rem;
+line-height: 1.8;
+color: #334155;
+}
 
-        .content-body h2 { color: #001f3f; margin-top: 40px; border-left: 5px solid #ff007f; padding-left: 15px; }
-        
-        .back-link {
-            display: inline-flex; align-items: center; gap: 10px;
-            color: #ff6600; /* Orange */ text-decoration: none;
-            font-weight: 600; margin-bottom: 40px; transition: 0.3s;
-        }
+.content-body p {
+margin-bottom: 30px;
+}
 
-        .back-link:hover { transform: translateX(-5px); color: #ff007f; }
+.back-link {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+color: #64748b;
+text-decoration: none;
+font-weight: 600;
+margin-bottom: 40px;
+transition: 0.3s;
+}
 
-        @media (max-width: 850px) {
-            .cursor-follower, .cursor-dot { display: none; }
-            html, body { cursor: auto; }
-            .article-main-img { height: 300px; }
-        }
-    </style>
+.back-link:hover { color: #0062ff; transform: translateX(-5px); }
+
+@media (max-width: 850px) {
+.cursor-follower, .cursor-dot { display: none; }
+html, body { cursor: auto; }
+.article-main-img { height: 300px; border-radius: 20px; }
+}
+</style>
 </head>
 <body>
-    <div class="cursor-follower"></div>
-    <div class="cursor-dot"></div>
 
-    <nav class="navbar">
-        <div class="logo"><img src="logo-casanet.png" alt="Logo" class="site-logo"></div>
-        <ul class="nav-links">
-            <li><a href="index.html" class="nav-item">Accueil</a></li>
-            <li><a href="blog.html" class="nav-item active">Blog</a></li>
-            <li><a href="apropos.html" class="nav-item">À Propos</a></li>
-            <li><a href="contact.html" class="nav-item">Contact</a></li>
-        </ul>
-    </nav>
+<div class="cursor-follower"></div>
+<div class="cursor-dot"></div>
 
-    <header class="article-header">
-        <div class="container">
-            <a href="blog.html" class="back-link"><i data-lucide="arrow-left"></i> Retour au blog</a>
-            <span class="category-tag">Expertise Cloud</span>
-            <h1 class="headline">Les défis de la migration vers le cloud</h1>
-        </div>
-    </header>
+<nav class="navbar">
+<div class="logo">
+<img src="logo-casanet.png" alt="Logo" class="site-logo">
+</div>
+<ul class="nav-links">
+<li><a href="index.html" class="nav-item">Accueil</a></li>
+<li><a href="blog.html" class="nav-item active">Blog</a></li>
+<li><a href="apropos.html" class="nav-item">À Propos</a></li>
+<li><a href="contact.html" class="nav-item">Contact</a></li>
+</ul>
+</nav>
 
-    <main class="container">
-        <div class="article-main-img">
-            <img src="votre-image-migration.jpg" alt="Défis Migration">
-        </div>
-        <article class="content-body">
-            <p>La migration vers le cloud est une étape stratégique, mais elle comporte plusieurs défis essentiels.</p>
-            
-            <h2>La sécurité des données</h2>
-            <p>Protéger les informations sensibles contre les cyberattaques lors du transfert nécessite des solutions de sécurité avancées.</p>
+<header class="article-header">
+<div class="container">
+<a href="blog.html" class="back-link"><i data-lucide="arrow-left"></i> Retour au blog</a>
+<span class="category-tag">Conseils Migration</span>
+<h1 class="headline" style="max-width: 900px; margin: 0 auto;">Les défis de la migration vers le cloud</h1>
+</div>
+</header>
 
-            <h2>Compatibilité et Coûts</h2>
-            <p>Adapter les anciens systèmes et gérer l'utilisation des ressources est crucial pour éviter des coûts inattendus.</p>
+<main class="container">
+<div class="article-main-img">
+<img src="article3.png" alt="Défis Migration Cloud">
+</div>
 
-            <h2>Planification avec Casanet</h2>
-            <p>S’appuyer sur des experts comme Casanet garantit une transition fluide et sécurisée grâce à une feuille de route claire.</p>
-        </article>
-    </main>
+<article class="content-body">
+<p><strong>La migration vers le cloud est une étape stratégique majeure, mais elle comporte plusieurs défis techniques et organisationnels que les entreprises doivent anticiper.</strong></p>
 
-    <footer><p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p></footer>
+<p>L’un des principaux enjeux est la <strong>sécurité des données</strong>. Lors du transfert d'informations sensibles vers des infrastructures distantes, il est primordial de mettre en place des protocoles de chiffrement et de contrôle d'accès rigoureux pour prévenir toute fuite de données.</p>
 
-    <script>
-        lucide.createIcons();
-        const follower = document.querySelector('.cursor-follower');
-        const dot = document.querySelector('.cursor-dot');
-        window.addEventListener('mousemove', (e) => {
-            dot.style.left = `${e.clientX}px`; dot.style.top = `${e.clientY}px`;
-            requestAnimationFrame(() => {
-                follower.style.left = `${e.clientX}px`; follower.style.top = `${e.clientY}px`;
-            });
-        });
-    </script>
+<p>Un autre défi réside dans la <strong>compatibilité des systèmes</strong>. Les applications "legacy" (anciennes) ne sont pas toujours prêtes à fonctionner nativement dans le cloud. Cela nécessite parfois une refonte de l'architecture logicielle ou l'utilisation de solutions intermédiaires.</p>
+
+<p>Enfin, la <strong>maîtrise des coûts</strong> est un aspect crucial. Sans une gouvernance efficace, les frais liés à la consommation de ressources cloud peuvent rapidement dépasser le budget prévu. Une surveillance en temps réel est indispensable pour optimiser les performances tout en contrôlant les dépenses.</p>
+
+<p>Réussir sa migration demande donc une planification minutieuse et l'accompagnement d'experts pour transformer ces défis en opportunités de croissance.</p>
+</article>
+</main>
+
+<footer>
+<p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
+</footer>
+
+<script>
+lucide.createIcons();
+
+const follower = document.querySelector('.cursor-follower');
+const dot = document.querySelector('.cursor-dot');
+
+window.addEventListener('mousemove', (e) => {
+dot.style.left = `${e.clientX}px`;
+dot.style.top = `${e.clientY}px`;
+requestAnimationFrame(() => {
+follower.style.left = `${e.clientX}px`;
+follower.style.top = `${e.clientY}px`;
+});
+});
+
+const interactables = document.querySelectorAll('a, button');
+interactables.forEach(item => {
+item.addEventListener('mouseenter', () => {
+follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
+});
+item.addEventListener('mouseleave', () => {
+follower.style.transform = 'translate(-50%, -50%) scale(1)';
+follower.style.backgroundColor = 'rgba(77, 166, 255, 0.2)';
+});
+});
+</script>
 </body>
 </html>
