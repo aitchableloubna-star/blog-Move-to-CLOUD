@@ -10,7 +10,7 @@
     <style>
         /* --- EFFETS INTERACTIFS (CURSOR & SCROLL) --- */
         html { scroll-behavior: smooth; cursor: none; }
-        body { cursor: none; overflow-x: hidden; background: #fcfcfc; }
+        body { cursor: none; overflow-x: hidden; }
 
         .cursor-follower {
             width: 40px; height: 40px;
@@ -31,19 +31,19 @@
 
         /* --- STYLES BLOG --- */
         .blog-hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('hero-bg.jpg') center/cover no-repeat;
-            padding: 160px 0 100px 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('hero-bg.jpg') center/cover no-repeat;
+            padding: 120px 0 80px 0;
             text-align: center;
         }
 
         .btn-primary {
             display: inline-block;
-            padding: 15px 35px;
+            padding: 15px 30px;
             background: #0062ff;
             color: white;
             text-decoration: none;
-            border-radius: 14px;
-            font-weight: 700;
+            border-radius: 12px;
+            font-weight: 600;
             transition: all 0.4s ease;
             box-shadow: 0 4px 15px rgba(0, 98, 255, 0.2);
         }
@@ -54,62 +54,37 @@
             box-shadow: 0 8px 25px rgba(77, 166, 255, 0.5);
         }
 
-        /* --- SECTION ARTICLES --- */
+        /* --- NOUVELLE SECTION ARTICLES --- */
         .articles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
             margin-top: 50px;
         }
 
         .article-card {
             background: white;
-            border-radius: 28px;
-            overflow: hidden; /* Pour que l'image respecte l'arrondi */
+            padding: 35px;
+            border-radius: 24px;
             border: 1px solid rgba(0, 98, 255, 0.05);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .article-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(0, 98, 255, 0.12);
-            border-color: rgba(77, 166, 255, 0.4);
-        }
-
-        .article-img {
-            width: 100%;
-            height: 200px;
-            background: #e2e8f0;
-            overflow: hidden;
-        }
-
-        .article-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .article-card:hover .article-img img {
-            transform: scale(1.1);
-        }
-
-        .article-content {
-            padding: 30px;
-            flex-grow: 1;
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 98, 255, 0.1);
+            border-color: rgba(77, 166, 255, 0.3);
+        }
+
         .article-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: #030712;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         .article-card p {
@@ -130,15 +105,19 @@
             transition: 0.3s;
         }
 
-        .btn-read-more:hover { gap: 15px; color: #4da6ff; }
+        .btn-read-more:hover { color: #4da6ff; }
 
-        /* Autres styles */
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
-        .stat-item { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 2rem; border-radius: 20px; text-align: center; color: white; }
-        .stat-item h4 { font-size: 2.5rem; margin-bottom: 5px; font-weight: 800; }
-        
+        .stat-item { background: var(--primary); color: white; padding: 2rem; border-radius: 15px; text-align: center; }
+        .stat-item h4 { font-size: 2rem; margin-bottom: 5px; }
+        .faq-container { max-width: 800px; margin: 40px auto; }
+        details { background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; border: 1px solid #e2e8f0; }
+        summary { font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .cta-section { background: var(--primary); color: white; padding: 80px 2rem; border-radius: 30px; text-align: center; }
+        .btn-white { background: white; color: var(--primary); padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; transition: 0.3s; }
+
         @media (max-width: 850px) {
-            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
             .cursor-follower, .cursor-dot { display: none; }
             html, body { cursor: auto; }
         }
@@ -163,11 +142,11 @@
 
     <header class="blog-hero">
         <div class="container">
-            <span style="color: #0062ff; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">Expertise Digitale</span>
-            <h1 class="headline" style="margin-top: 15px;">Move to <span class="gradient-text">Cloud</span></h1>
+            <h1 class="headline">Move to <span class="gradient-text">Cloud</span></h1>
             <p class="hero-subtitle">Réussir sa stratégie cloud sans créer de complexité supplémentaire.</p>
-            <div class="hero-btns" style="margin-top: 40px;">
-                <a href="#articles-section" class="btn-primary">Explorer les articles</a>
+            <p style="max-width: 800px; margin: 0 auto 30px auto; color: var(--text);">Les entreprises modernisent leurs infrastructures grâce au cloud computing, à la data et à l’intelligence artificielle.</p>
+            <div class="hero-btns">
+                <a href="#articles-section" class="btn-primary">Découvrir les articles</a>
             </div>
         </div>
     </header>
@@ -177,68 +156,76 @@
             <h2 class="section-title" style="text-align: center;">Dernières publications</h2>
             
             <div class="articles-grid">
-                <!-- Article 1: Cloud & Transformation -->
+                <!-- Article 1 -->
                 <article class="article-card">
-                    <div class="article-img">
-                        <img src="transformation-digitale.jpg" alt="Cloud computing transformation">
-                    </div>
-                    <div class="article-content">
+                    <div>
                         <h3>Le rôle du cloud dans la transformation digitale</h3>
-                        <p>Le cloud est devenu un moteur de modernisation essentiel pour l'agilité et l'innovation des entreprises.</p>
-                        <!-- LIEN VERS LA NOUVELLE PAGE -->
-                        <a href="article-cloud.html" class="btn-read-more">Lire l'article <i data-lucide="arrow-right" style="width:16px"></i></a>
+                        <p>Le cloud est devenu un élément central. Il permet d’améliorer l’agilité, d’accéder aux données en temps réel et de déployer rapidement de nouveaux services.</p>
                     </div>
+                    <!-- LIEN VERS LA PAGE CRÉÉE PRÉCÉDEMMENT -->
+                    <a href="article-cloud.html" class="btn-read-more">Lire plus <i data-lucide="arrow-right" style="width:16px"></i></a>
                 </article>
 
-                <!-- Article 2: Types de Cloud -->
+                <!-- Article 2 -->
                 <article class="article-card">
-                    <div class="article-img">
-                        <img src="cloud-types.jpg" alt="Public vs Private Cloud">
-                    </div>
-                    <div class="article-content">
+                    <div>
                         <h3>Cloud public, privé et hybride : quelles différences ?</h3>
-                        <p>Comprendre les nuances entre les différents modèles pour choisir la solution adaptée à vos besoins.</p>
-                        <a href="#" class="btn-read-more">Bientôt disponible <i data-lucide="lock" style="width:16px"></i></a>
+                        <p>Le cloud public offre flexibilité et coût réduit, le cloud privé garantit la sécurité, tandis que le hybride combine le meilleur des deux mondes.</p>
                     </div>
+                    <!-- LIEN VERS LA FUTURE PAGE 2 -->
+                    <a href="article-types-cloud.html" class="btn-read-more">Lire plus <i data-lucide="arrow-right" style="width:16px"></i></a>
                 </article>
 
-                <!-- Article 3: Défis Migration -->
+                <!-- Article 3 -->
                 <article class="article-card">
-                    <div class="article-img">
-                        <img src="migration-challenges.jpg" alt="Migration challenges">
-                    </div>
-                    <div class="article-content">
+                    <div>
                         <h3>Les défis de la migration vers le cloud</h3>
-                        <p>Sécurité, coûts et compatibilité : comment anticiper les obstacles d'une migration réussie.</p>
-                        <a href="#" class="btn-read-more">Bientôt disponible <i data-lucide="lock" style="width:16px"></i></a>
+                        <p>La migration présente des défis : sécurité, compatibilité et gestion des coûts. S’appuyer sur des experts comme Casanet est essentiel pour réussir.</p>
                     </div>
+                    <!-- LIEN VERS LA FUTURE PAGE 3 -->
+                    <a href="article-migration.html" class="btn-read-more">Lire plus <i data-lucide="arrow-right" style="width:16px"></i></a>
                 </article>
             </div>
         </div>
     </section>
 
-    <section class="section" style="background: #0062ff; color: white;">
+    <section class="section" style="background: var(--primary); color: white;">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; color: white;">Impact du Cloud en chiffres</h2>
+            <h2 class="section-title" style="text-align: center; color: white;">Le cloud, la Data et l’IA</h2>
             <div class="stats-grid">
-                <div class="stat-item"><h4>85%</h4><p>Usage Cloud</p></div>
-                <div class="stat-item"><h4>60%</h4><p>Réduction Coûts</p></div>
-                <div class="stat-item"><h4>3x</h4><p>Plus rapide</p></div>
-                <div class="stat-item"><h4>90%</h4><p>Collaboration</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>85%</h4><p>Usage Cloud</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>60%</h4><p>Réduction Coûts</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>3x</h4><p>Plus rapide</p></div>
+                <div class="stat-item" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);"><h4>90%</h4><p>Collaboration</p></div>
             </div>
         </div>
     </section>
 
-    <div class="container" style="padding: 100px 0;">
-        <div class="cta-section" style="background: #1e293b; padding: 80px; border-radius: 40px; text-align: center; color: white;">
-            <h2 style="font-size: 2.8rem; margin-bottom: 20px;">Prêt à transformer votre SI ?</h2>
-            <p style="color: #cbd5e1; margin-bottom: 40px;">Nos experts Casanet vous accompagnent à chaque étape de votre migration.</p>
-            <a href="contact.html" class="btn-white" style="background: white; color: #1e293b; padding: 18px 40px; border-radius: 12px; text-decoration: none; font-weight: 800;">Démarrer un projet</a>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Questions fréquentes</h2>
+            <div class="faq-container">
+                <details>
+                    <summary>Pourquoi migrer vers le cloud ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
+                    <p style="padding-top: 15px; color: var(--text);">Pour gagner en agilité, en sécurité et réduire les coûts liés à la maintenance physique.</p>
+                </details>
+                <details>
+                    <summary>Le cloud est-il sécurisé ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
+                    <p style="padding-top: 15px; color: var(--text);">Oui, les fournisseurs majeurs investissent massivement dans des protocoles de pointe.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" style="padding-bottom: 80px;">
+        <div class="cta-section">
+            <h2 style="font-size: 2.5rem;">Prêt pour la transformation ?</h2>
+            <a href="contact.html" class="btn-white">Contactez-nous</a>
         </div>
     </div>
 
-    <footer style="padding: 40px; text-align: center; border-top: 1px solid #eee;">
-        <p style="color: #94a3b8;">&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
+    <footer>
+        <p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
     </footer>
 
     <script>
@@ -248,19 +235,21 @@
         const dot = document.querySelector('.cursor-dot');
 
         window.addEventListener('mousemove', (e) => {
-            dot.style.left = `${e.clientX}px`;
-            dot.style.top = `${e.clientY}px`;
+            const posX = e.clientX;
+            const posY = e.clientY;
+            dot.style.left = `${posX}px`;
+            dot.style.top = `${posY}px`;
             requestAnimationFrame(() => {
-                follower.style.left = `${e.clientX}px`;
-                follower.style.top = `${e.clientY}px`;
+                follower.style.left = `${posX}px`;
+                follower.style.top = `${posY}px`;
             });
         });
 
-        const links = document.querySelectorAll('a, button, .article-card');
+        const links = document.querySelectorAll('a, summary, .article-card');
         links.forEach(link => {
             link.addEventListener('mouseenter', () => {
-                follower.style.transform = 'translate(-50%, -50%) scale(1.6)';
-                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.4)';
+                follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
             });
             link.addEventListener('mouseleave', () => {
                 follower.style.transform = 'translate(-50%, -50%) scale(1)';
