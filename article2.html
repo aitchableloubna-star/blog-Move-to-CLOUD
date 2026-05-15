@@ -1,173 +1,251 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Types de Cloud | Casanet Blog</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest"></script>
-<style>
-/* --- SYSTÈME INTERACTIF (CURSOR & SCROLL) --- */
-html { scroll-behavior: smooth; cursor: none; }
-body { cursor: none; overflow-x: hidden; background: #ffffff; color: #1e293b; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratégie Cloud | Casanet Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* --- SYSTÈME INTERACTIF (CURSOR & SCROLL) --- */
+        html { scroll-behavior: smooth; cursor: none; }
+        body { cursor: none; overflow-x: hidden; background: #ffffff; color: #1e293b; }
 
-.cursor-follower {
-width: 40px; height: 40px;
-background-color: rgba(77, 166, 255, 0.2);
-border-radius: 50%; position: fixed;
-pointer-events: none; z-index: 9999;
-left: 0; top: 0; transform: translate(-50%, -50%);
-transition: transform 0.15s ease-out;
-}
+        .cursor-follower {
+            width: 40px; height: 40px;
+            background-color: rgba(77, 166, 255, 0.2);
+            border-radius: 50%; position: fixed;
+            pointer-events: none; z-index: 9999;
+            left: 0; top: 0; transform: translate(-50%, -50%);
+            transition: transform 0.15s ease-out;
+        }
 
-.cursor-dot {
-width: 6px; height: 6px;
-background-color: #4da6ff;
-border-radius: 50%; position: fixed;
-pointer-events: none; z-index: 10000;
-left: 0; top: 0; transform: translate(-50%, -50%);
-}
+        .cursor-dot {
+            width: 6px; height: 6px;
+            background-color: #4da6ff;
+            border-radius: 50%; position: fixed;
+            pointer-events: none; z-index: 10000;
+            left: 0; top: 0; transform: translate(-50%, -50%);
+        }
 
-/* --- DESIGN DE L'ARTICLE --- */
-.article-header {
-padding: 160px 0 60px 0;
-background: linear-gradient(to bottom, #f0f9ff, #ffffff);
-text-align: center;
-}
+        /* --- DESIGN DE L'ARTICLE --- */
+        .article-header {
+            padding: 160px 0 60px 0;
+            background: linear-gradient(to bottom, #f0f9ff, #ffffff);
+            text-align: center;
+        }
 
-.category-tag {
-color: #0062ff;
-font-weight: 800;
-text-transform: uppercase;
-font-size: 0.85rem;
-letter-spacing: 2px;
-display: block;
-margin-bottom: 15px;
-}
+        .category-tag {
+            color: #0062ff;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 15px;
+        }
 
-.article-main-img {
-width: 100%;
-max-width: 1000px;
-height: 500px;
-margin: 0 auto 60px auto;
-border-radius: 40px;
-overflow: hidden;
-box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-}
+        /* Image plus petite et alignée à gauche pour la créativité */
+        .article-main-img {
+            width: 100%;
+            max-width: 550px;
+            height: 350px;
+            margin: 0 40px 30px 0;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 98, 255, 0.15);
+            float: left;
+        }
 
-.article-main-img img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
+        .article-main-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.content-body {
-max-width: 800px;
-margin: 0 auto;
-padding: 0 20px 100px 20px;
-font-size: 1.2rem;
-line-height: 1.8;
-color: #334155;
-}
+        .content-body {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 20px 100px 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #334155;
+        }
 
-.content-body p {
-margin-bottom: 30px;
-}
+        /* Grille de solutions organisée */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
 
-.back-link {
-display: inline-flex;
-align-items: center;
-gap: 10px;
-color: #64748b;
-text-decoration: none;
-font-weight: 600;
-margin-bottom: 40px;
-transition: 0.3s;
-}
+        .solution-card {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
 
-.back-link:hover { color: #0062ff; transform: translateX(-5px); }
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: #4da6ff;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
 
-@media (max-width: 850px) {
-.cursor-follower, .cursor-dot { display: none; }
-html, body { cursor: auto; }
-.article-main-img { height: 300px; border-radius: 20px; }
-}
-</style>
+        .solution-card i {
+            color: #0062ff;
+            background: rgba(0, 98, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        /* Cadre d'accompagnement final */
+        .support-box {
+            background: linear-gradient(135deg, #0062ff, #4da6ff);
+            color: white;
+            padding: 40px;
+            border-radius: 24px;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-box h3 { color: white; margin-bottom: 15px; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 40px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover { color: #0062ff; transform: translateX(-5px); }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        @media (max-width: 850px) {
+            .cursor-follower, .cursor-dot { display: none; }
+            html, body { cursor: auto; }
+            .article-main-img { float: none; margin: 0 auto 30px auto; height: 280px; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="cursor-follower"></div>
-<div class="cursor-dot"></div>
+    <div class="cursor-follower"></div>
+    <div class="cursor-dot"></div>
 
-<nav class="navbar">
-<div class="logo">
-<img src="logo-casanet.png" alt="Logo" class="site-logo">
-</div>
-<ul class="nav-links">
-<li><a href="index.html" class="nav-item">Accueil</a></li>
-<li><a href="blog.html" class="nav-item active">Blog</a></li>
-<li><a href="apropos.html" class="nav-item">À Propos</a></li>
-<li><a href="contact.html" class="nav-item">Contact</a></li>
-</ul>
-</nav>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo-casanet.png" alt="Logo" class="site-logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-item">Accueil</a></li>
+            <li><a href="blog.html" class="nav-item active">Blog</a></li>
+            <li><a href="apropos.html" class="nav-item">À Propos</a></li>
+            <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+    </nav>
 
-<header class="article-header">
-<div class="container">
-<a href="blog.html" class="back-link"><i data-lucide="arrow-left"></i> Retour au blog</a>
-<span class="category-tag">Modèles de Cloud</span>
-<h1 class="headline" style="max-width: 900px; margin: 0 auto;">Cloud public, privé et hybride : quelles différences ?</h1>
-</div>
-</header>
+    <header class="article-header">
+        <div class="container">
+            <a href="blog.html" class="back-link"><i data-lucide="arrow-left"></i> Retour au blog</a>
+            <span class="category-tag">Stratégie & Sécurité</span>
+            <h1 class="headline" style="max-width: 900px; margin: 0 auto;">Une stratégie cloud intelligente : simplicité, sécurité et performance</h1>
+        </div>
+    </header>
 
-<main class="container">
-<div class="article-main-img">
-<img src="article2.png" alt="Types de Cloud">
-</div>
+    <main class="container content-body">
+        <div class="clearfix">
+            <div class="article-main-img">
+                <img src="article22.png" alt="Stratégie Cloud Microsoft Azure">
+            </div>
 
-<article class="content-body">
-<p><strong>Le cloud computing se décline principalement en trois modèles : le cloud public, le cloud privé et le cloud hybride.</strong> Chacun possède ses propres caractéristiques, avantages et limites, ce qui rend le choix stratégique pour les entreprises.</p>
+            <p>De nombreuses entreprises hésitent encore à migrer vers le cloud par peur de perdre le contrôle, de complexifier leur système informatique ou de compromettre la sécurité de leurs données.</p>
 
-<p>Le <strong>cloud public</strong> est une infrastructure partagée entre plusieurs utilisateurs et gérée par un fournisseur externe. Il est très apprécié pour sa flexibilité, son évolutivité et son modèle de paiement à l'usage, ce qui permet de réduire les coûts opérationnels.</p>
+            <p><strong>Chez Casanet</strong>, notre mission est justement de rendre cette transition simple, maîtrisée et parfaitement adaptée aux besoins de chaque organisation. Grâce à <strong>Microsoft Azure</strong>, nous concevons des architectures cloud modernes qui offrent un équilibre optimal entre performance, sécurité et flexibilité.</p>
+            
+            <p>Nos experts analysent les besoins métiers de chaque client afin de proposer une stratégie cloud personnalisée et évolutive.</p>
+        </div>
 
-<p>Le <strong>cloud privé</strong> est quant à lui dédié exclusivement à une seule organisation. Ce modèle garantit un niveau de sécurité, de confidentialité et de contrôle beaucoup plus élevé, répondant aux exigences strictes des secteurs régulés.</p>
+        <h3 style="margin-top: 40px; color: #0062ff;">Nos solutions permettent de :</h3>
+        
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <i data-lucide="shield-check"></i>
+                <p><strong>Sécuriser les données</strong> critiques de l’entreprise avec des protocoles avancés.</p>
+            </div>
+            <div class="solution-card">
+                <i data-lucide="refresh-cw"></i>
+                <p><strong>Garantir la continuité</strong> des services en cas d'incident.</p>
+            </div>
+            <div class="solution-card">
+                <i data-lucide="zap"></i>
+                <p><strong>Optimiser les performances</strong> de vos applications métiers quotidiennes.</p>
+            </div>
+            <div class="solution-card">
+                <i data-lucide="users"></i>
+                <p><strong>Faciliter le travail hybride</strong> et la mobilité de vos collaborateurs.</p>
+            </div>
+        </div>
 
-<p>Enfin, le <strong>cloud hybride</strong> combine le meilleur des deux mondes. Il permet aux entreprises de profiter de la puissance du cloud public pour les tâches courantes tout en conservant les données sensibles et les applications critiques dans un environnement privé hautement sécurisé.</p>
+        <p>Avec les technologies Azure, les entreprises bénéficient également d’outils avancés de cybersécurité, de sauvegarde intelligente et de supervision en temps réel. Cela permet de détecter rapidement les anomalies et de protéger efficacement les environnements numériques.</p>
 
-<p>Choisir le bon modèle dépend des objectifs spécifiques de votre entreprise, de votre budget et de vos besoins en matière de conformité et de performance.</p>
-</article>
-</main>
+        <div class="support-box">
+            <h3>Un accompagnement complet par Casanet</h3>
+            <p>De l’audit initial jusqu’au déploiement, en passant par la migration, l’optimisation et le support technique. Notre objectif est clair : permettre aux entreprises de profiter pleinement du cloud sans subir de complexité opérationnelle.</p>
+        </div>
+    </main>
 
-<footer>
-<p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
-</footer>
+    <footer>
+        <p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
+    </footer>
 
-<script>
-lucide.createIcons();
+    <script>
+        lucide.createIcons();
 
-const follower = document.querySelector('.cursor-follower');
-const dot = document.querySelector('.cursor-dot');
+        const follower = document.querySelector('.cursor-follower');
+        const dot = document.querySelector('.cursor-dot');
 
-window.addEventListener('mousemove', (e) => {
-dot.style.left = `${e.clientX}px`;
-dot.style.top = `${e.clientY}px`;
-requestAnimationFrame(() => {
-follower.style.left = `${e.clientX}px`;
-follower.style.top = `${e.clientY}px`;
-});
-});
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = `${e.clientX}px`;
+            dot.style.top = `${e.clientY}px`;
+            requestAnimationFrame(() => {
+                follower.style.left = `${e.clientX}px`;
+                follower.style.top = `${e.clientY}px`;
+            });
+        });
 
-const interactables = document.querySelectorAll('a, button');
-interactables.forEach(item => {
-item.addEventListener('mouseenter', () => {
-follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
-follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
-});
-item.addEventListener('mouseleave', () => {
-follower.style.transform = 'translate(-50%, -50%) scale(1)';
-follower.style.backgroundColor = 'rgba(77, 166, 255, 0.2)';
-});
-});
-</script>
+        const interactables = document.querySelectorAll('a, button, .solution-card');
+        interactables.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
+            });
+            item.addEventListener('mouseleave', () => {
+                follower.style.transform = 'translate(-50%, -50%) scale(1)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.2)';
+            });
+        });
+    </script>
 </body>
 </html>
