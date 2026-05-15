@@ -1,173 +1,260 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Défis Migration | Casanet Blog</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest"></script>
-<style>
-/* --- SYSTÈME INTERACTIF (CURSOR & SCROLL) --- */
-html { scroll-behavior: smooth; cursor: none; }
-body { cursor: none; overflow-x: hidden; background: #ffffff; color: #1e293b; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'entreprise de demain | Casanet Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* --- SYSTÈME INTERACTIF (CURSOR & SCROLL) --- */
+        html { scroll-behavior: smooth; cursor: none; }
+        body { cursor: none; overflow-x: hidden; background: #ffffff; color: #1e293b; }
 
-.cursor-follower {
-width: 40px; height: 40px;
-background-color: rgba(77, 166, 255, 0.2);
-border-radius: 50%; position: fixed;
-pointer-events: none; z-index: 9999;
-left: 0; top: 0; transform: translate(-50%, -50%);
-transition: transform 0.15s ease-out;
-}
+        .cursor-follower {
+            width: 40px; height: 40px;
+            background-color: rgba(77, 166, 255, 0.2);
+            border-radius: 50%; position: fixed;
+            pointer-events: none; z-index: 9999;
+            left: 0; top: 0; transform: translate(-50%, -50%);
+            transition: transform 0.15s ease-out;
+        }
 
-.cursor-dot {
-width: 6px; height: 6px;
-background-color: #4da6ff;
-border-radius: 50%; position: fixed;
-pointer-events: none; z-index: 10000;
-left: 0; top: 0; transform: translate(-50%, -50%);
-}
+        .cursor-dot {
+            width: 6px; height: 6px;
+            background-color: #4da6ff;
+            border-radius: 50%; position: fixed;
+            pointer-events: none; z-index: 10000;
+            left: 0; top: 0; transform: translate(-50%, -50%);
+        }
 
-/* --- DESIGN DE L'ARTICLE --- */
-.article-header {
-padding: 160px 0 60px 0;
-background: linear-gradient(to bottom, #f0f9ff, #ffffff);
-text-align: center;
-}
+        /* --- DESIGN DE L'ARTICLE --- */
+        .article-header {
+            padding: 160px 0 60px 0;
+            background: linear-gradient(to bottom, #f0f9ff, #ffffff);
+            text-align: center;
+        }
 
-.category-tag {
-color: #0062ff;
-font-weight: 800;
-text-transform: uppercase;
-font-size: 0.85rem;
-letter-spacing: 2px;
-display: block;
-margin-bottom: 15px;
-}
+        .category-tag {
+            color: #0062ff;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 15px;
+        }
 
-.article-main-img {
-width: 100%;
-max-width: 1000px;
-height: 500px;
-margin: 0 auto 60px auto;
-border-radius: 40px;
-overflow: hidden;
-box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-}
+        /* Image plus petite et créative */
+        .article-main-img {
+            width: 100%;
+            max-width: 550px;
+            height: 350px;
+            margin: 0 40px 30px 0;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 98, 255, 0.15);
+            float: left;
+        }
 
-.article-main-img img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
+        .article-main-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.content-body {
-max-width: 800px;
-margin: 0 auto;
-padding: 0 20px 100px 20px;
-font-size: 1.2rem;
-line-height: 1.8;
-color: #334155;
-}
+        .content-body {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 20px 100px 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #334155;
+        }
 
-.content-body p {
-margin-bottom: 30px;
-}
+        /* Liste de technologies (badges) */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 25px 0;
+        }
 
-.back-link {
-display: inline-flex;
-align-items: center;
-gap: 10px;
-color: #64748b;
-text-decoration: none;
-font-weight: 600;
-margin-bottom: 40px;
-transition: 0.3s;
-}
+        .tech-badge {
+            background: #f1f5f9;
+            color: #0062ff;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-.back-link:hover { color: #0062ff; transform: translateX(-5px); }
+        /* Grille de valeur ajoutée */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
 
-@media (max-width: 850px) {
-.cursor-follower, .cursor-dot { display: none; }
-html, body { cursor: auto; }
-.article-main-img { height: 300px; border-radius: 20px; }
-}
-</style>
+        .value-card {
+            border-bottom: 4px solid #4da6ff;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            text-align: center;
+        }
+
+        .value-card i {
+            margin-bottom: 15px;
+            color: #0062ff;
+        }
+
+        .cta-section {
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            margin-top: 50px;
+            border: 1px dashed #4da6ff;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 40px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover { color: #0062ff; transform: translateX(-5px); }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        @media (max-width: 850px) {
+            .cursor-follower, .cursor-dot { display: none; }
+            html, body { cursor: auto; }
+            .article-main-img { float: none; margin: 0 auto 30px auto; height: 280px; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="cursor-follower"></div>
-<div class="cursor-dot"></div>
+    <div class="cursor-follower"></div>
+    <div class="cursor-dot"></div>
 
-<nav class="navbar">
-<div class="logo">
-<img src="logo-casanet.png" alt="Logo" class="site-logo">
-</div>
-<ul class="nav-links">
-<li><a href="index.html" class="nav-item">Accueil</a></li>
-<li><a href="blog.html" class="nav-item active">Blog</a></li>
-<li><a href="apropos.html" class="nav-item">À Propos</a></li>
-<li><a href="contact.html" class="nav-item">Contact</a></li>
-</ul>
-</nav>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo-casanet.png" alt="Logo" class="site-logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-item">Accueil</a></li>
+            <li><a href="blog.html" class="nav-item active">Blog</a></li>
+            <li><a href="apropos.html" class="nav-item">À Propos</a></li>
+            <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+    </nav>
 
-<header class="article-header">
-<div class="container">
-<a href="blog.html" class="back-link"><i data-lucide="arrow-left"></i> Retour au blog</a>
-<span class="category-tag">Conseils Migration</span>
-<h1 class="headline" style="max-width: 900px; margin: 0 auto;">Les défis de la migration vers le cloud</h1>
-</div>
-</header>
+    <header class="article-header">
+        <div class="container">
+            <a href="blog.html" class="back-link"><i data-lucide="arrow-left"></i> Retour au blog</a>
+            <span class="category-tag">Vision & Futur</span>
+            <h1 class="headline" style="max-width: 900px; margin: 0 auto;">Casanet & Microsoft Azure : construire l’entreprise digitale de demain</h1>
+        </div>
+    </header>
 
-<main class="container">
-<div class="article-main-img">
-<img src="article3.png" alt="Défis Migration Cloud">
-</div>
+    <main class="container content-body">
+        <div class="clearfix">
+            <div class="article-main-img">
+                <img src="article3.png" alt="Entreprise Digitale Azure">
+            </div>
 
-<article class="content-body">
-<p><strong>La migration vers le cloud est une étape stratégique majeure, mais elle comporte plusieurs défis techniques et organisationnels que les entreprises doivent anticiper.</strong></p>
+            <p>Le cloud ne représente plus seulement une solution technologique ; il est devenu un <strong>pilier essentiel de l’entreprise moderne</strong>. Avec Casanet et Microsoft Azure, les organisations peuvent transformer leur manière de travailler, d’innover et de gérer leurs opérations quotidiennes.</p>
 
-<p>L’un des principaux enjeux est la <strong>sécurité des données</strong>. Lors du transfert d'informations sensibles vers des infrastructures distantes, il est primordial de mettre en place des protocoles de chiffrement et de contrôle d'accès rigoureux pour prévenir toute fuite de données.</p>
+            <p>Nos solutions cloud permettent de créer des environnements IT plus intelligents, capables de s’adapter rapidement aux évolutions du marché et aux nouveaux besoins métiers.</p>
+        </div>
 
-<p>Un autre défi réside dans la <strong>compatibilité des systèmes</strong>. Les applications "legacy" (anciennes) ne sont pas toujours prêtes à fonctionner nativement dans le cloud. Cela nécessite parfois une refonte de l'architecture logicielle ou l'utilisation de solutions intermédiaires.</p>
+        <h3 style="margin-top: 40px; color: #0062ff;">Technologies avancées exploitées :</h3>
+        <div class="tech-tags">
+            <div class="tech-badge"><i data-lucide="cpu"></i> Intelligence Artificielle</div>
+            <div class="tech-badge"><i data-lucide="bar-chart-3"></i> Analyse de données</div>
+            <div class="tech-badge"><i data-lucide="settings-2"></i> Automatisation</div>
+            <div class="tech-badge"><i data-lucide="database"></i> Stockage Haute Disponibilité</div>
+            <div class="tech-badge"><i data-lucide="layers"></i> Microsoft 365</div>
+        </div>
 
-<p>Enfin, la <strong>maîtrise des coûts</strong> est un aspect crucial. Sans une gouvernance efficace, les frais liés à la consommation de ressources cloud peuvent rapidement dépasser le budget prévu. Une surveillance en temps réel est indispensable pour optimiser les performances tout en contrôlant les dépenses.</p>
+        <p>Casanet aide les entreprises à moderniser leurs infrastructures tout en gardant une maîtrise totale de leurs opérations. Nous construisons des solutions sur mesure capables d’améliorer la productivité, renforcer la résilience des systèmes et accélérer l’innovation.</p>
 
-<p>Réussir sa migration demande donc une planification minutieuse et l'accompagnement d'experts pour transformer ces défis en opportunités de croissance.</p>
-</article>
-</main>
+        <h3 style="margin-top: 40px; color: #0062ff; text-align: center;">Notre valeur ajoutée repose sur :</h3>
+        
+        <div class="value-grid">
+            <div class="value-card">
+                <i data-lucide="award" size="32"></i>
+                <p>Expertise technique certifiée</p>
+            </div>
+            <div class="value-card">
+                <i data-lucide="target" size="32"></i>
+                <p>Approche centrée besoins métiers</p>
+            </div>
+            <div class="value-card">
+                <i data-lucide="trending-up" size="32"></i>
+                <p>Solutions évolutives</p>
+            </div>
+            <div class="value-card">
+                <i data-lucide="compass" size="32"></i>
+                <p>Accompagnement durable</p>
+            </div>
+        </div>
 
-<footer>
-<p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
-</footer>
+        <div class="cta-section">
+            <p>En choisissant Casanet comme partenaire cloud, les entreprises investissent dans une infrastructure moderne, sécurisée et prête pour les défis du futur.</p>
+            <p><strong>Avec Microsoft Azure, vous avez la plateforme. Avec Casanet, vous avez l'avantage compétitif.</strong></p>
+        </div>
+    </main>
 
-<script>
-lucide.createIcons();
+    <footer>
+        <p>&copy; 2026 Casanet. Partenaire de votre transformation digitale.</p>
+    </footer>
 
-const follower = document.querySelector('.cursor-follower');
-const dot = document.querySelector('.cursor-dot');
+    <script>
+        lucide.createIcons();
 
-window.addEventListener('mousemove', (e) => {
-dot.style.left = `${e.clientX}px`;
-dot.style.top = `${e.clientY}px`;
-requestAnimationFrame(() => {
-follower.style.left = `${e.clientX}px`;
-follower.style.top = `${e.clientY}px`;
-});
-});
+        const follower = document.querySelector('.cursor-follower');
+        const dot = document.querySelector('.cursor-dot');
 
-const interactables = document.querySelectorAll('a, button');
-interactables.forEach(item => {
-item.addEventListener('mouseenter', () => {
-follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
-follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
-});
-item.addEventListener('mouseleave', () => {
-follower.style.transform = 'translate(-50%, -50%) scale(1)';
-follower.style.backgroundColor = 'rgba(77, 166, 255, 0.2)';
-});
-});
-</script>
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = `${e.clientX}px`;
+            dot.style.top = `${e.clientY}px`;
+            requestAnimationFrame(() => {
+                follower.style.left = `${e.clientX}px`;
+                follower.style.top = `${e.clientY}px`;
+            });
+        });
+
+        const interactables = document.querySelectorAll('a, button, .value-card, .tech-badge');
+        interactables.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
+            });
+            item.addEventListener('mouseleave', () => {
+                follower.style.transform = 'translate(-50%, -50%) scale(1)';
+                follower.style.backgroundColor = 'rgba(77, 166, 255, 0.2)';
+            });
+        });
+    </script>
 </body>
 </html>
