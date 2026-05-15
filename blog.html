@@ -10,7 +10,7 @@
     <style>
         /* --- EFFETS INTERACTIFS (CURSOR & SCROLL) --- */
         html { scroll-behavior: smooth; cursor: none; }
-        body { cursor: none; overflow-x: hidden; }
+        body { cursor: none; overflow-x: hidden; background: #ffffff; color: #1e293b; }
 
         .cursor-follower {
             width: 40px; height: 40px;
@@ -54,24 +54,23 @@
             box-shadow: 0 8px 25px rgba(77, 166, 255, 0.5);
         }
 
-        /* --- NOUVELLE SECTION ARTICLES --- */
+        /* --- SECTION ARTICLES --- */
         .articles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
             margin-top: 50px;
         }
 
         .article-card {
             background: white;
-            padding: 35px;
             border-radius: 24px;
             border: 1px solid rgba(0, 98, 255, 0.05);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             transition: all 0.4s ease;
+            overflow: hidden; /* Pour que l'image respecte l'arrondi */
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
         .article-card:hover {
@@ -80,11 +79,35 @@
             border-color: rgba(77, 166, 255, 0.3);
         }
 
+        .article-img-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .article-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover .article-img-container img {
+            transform: scale(1.1);
+        }
+
+        .article-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
         .article-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
             color: #030712;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .article-card p {
@@ -92,6 +115,7 @@
             font-size: 0.95rem;
             line-height: 1.6;
             margin-bottom: 25px;
+            flex-grow: 1;
         }
 
         .btn-read-more {
@@ -108,13 +132,15 @@
         .btn-read-more:hover { color: #4da6ff; }
 
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
-        .stat-item { background: var(--primary); color: white; padding: 2rem; border-radius: 15px; text-align: center; }
+        .stat-item { padding: 2rem; border-radius: 15px; text-align: center; }
         .stat-item h4 { font-size: 2rem; margin-bottom: 5px; }
+        
         .faq-container { max-width: 800px; margin: 40px auto; }
         details { background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; border: 1px solid #e2e8f0; }
         summary { font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .cta-section { background: var(--primary); color: white; padding: 80px 2rem; border-radius: 30px; text-align: center; }
-        .btn-white { background: white; color: var(--primary); padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; transition: 0.3s; }
+        
+        .cta-section { background: #0062ff; color: white; padding: 80px 2rem; border-radius: 30px; text-align: center; }
+        .btn-white { background: white; color: #0062ff; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; transition: 0.3s; }
 
         @media (max-width: 850px) {
             .stats-grid { grid-template-columns: 1fr; }
@@ -144,7 +170,7 @@
         <div class="container">
             <h1 class="headline">Move to <span class="gradient-text">Cloud</span></h1>
             <p class="hero-subtitle">Réussir sa stratégie cloud sans créer de complexité supplémentaire.</p>
-            <p style="max-width: 800px; margin: 0 auto 30px auto; color: var(--text);">Les entreprises modernisent leurs infrastructures grâce au cloud computing, à la data et à l’intelligence artificielle.</p>
+            <p style="max-width: 800px; margin: 0 auto 30px auto; color: #64748b;">Les entreprises modernisent leurs infrastructures grâce au cloud computing, à la data et à l’intelligence artificielle avec Azure.</p>
             <div class="hero-btns">
                 <a href="#articles-section" class="btn-primary">Découvrir les articles</a>
             </div>
@@ -156,40 +182,43 @@
             <h2 class="section-title" style="text-align: center;">Dernières publications</h2>
             
             <div class="articles-grid">
-                <!-- Article 1 -->
                 <article class="article-card">
-                    <div>
-                        <h3>Le rôle du cloud dans la transformation digitale</h3>
-                        <p>Le cloud est devenu un élément central. Il permet d’améliorer l’agilité, d’accéder aux données en temps réel et de déployer rapidement de nouveaux services.</p>
+                    <div class="article-img-container">
+                        <img src="article11.png" alt="Move to Cloud Casanet">
                     </div>
-                    <!-- MODIFICATION ICI : Lien vers article1.html -->
-                    <a href="article1.html" class="btn-read-more">Lire plus <i data-lucide="arrow-right" style="width:16px"></i></a>
+                    <div class="article-content">
+                        <h3>Move to Cloud : accélérez votre transformation digitale</h3>
+                        <p>Grâce à l’expertise de Casanet et aux solutions Microsoft Azure, les entreprises peuvent moderniser leur infrastructure IT, améliorer leur agilité et accéder à des services cloud sécurisés.</p>
+                        <a href="article1.html" class="btn-read-more">Lire plus <i data-lucide="arrow-right" style="width:16px"></i></a>
+                    </div>
                 </article>
 
-                <!-- Article 2 -->
                 <article class="article-card">
-                    <div>
-                        <h3>Cloud public, privé et hybride : quelles différences ?</h3>
-                        <p>Le cloud public offre flexibilité et coût réduit, le cloud privé garantit la sécurité, tandis que le hybride combine le meilleur des deux mondes.</p>
+                    <div class="article-img-container">
+                        <img src="article22.png" alt="Stratégie Cloud Microsoft Azure">
                     </div>
-                    <!-- MODIFICATION ICI : Lien vers article2.html -->
-                    <a href="article2.html" class="btn-read-more">Lire plus <i data-lucide="arrow-right" style="width:16px"></i></a>
+                    <div class="article-content">
+                        <h3>Une stratégie cloud simple, sécurisée et performante</h3>
+                        <p>Casanet accompagne les entreprises dans la mise en place d’une stratégie cloud intelligente avec Microsoft Azure afin de garantir sécurité, performance et continuité des services.</p>
+                        <a href="article2.html" class="btn-read-more">Lire plus <i data-lucide="arrow-right" style="width:16px"></i></a>
+                    </div>
                 </article>
 
-                <!-- Article 3 -->
                 <article class="article-card">
-                    <div>
-                        <h3>Les défis de la migration vers le cloud</h3>
-                        <p>La migration présente des défis : sécurité, compatibilité et gestion des coûts. S’appuyer sur des experts comme Casanet est essentiel pour réussir.</p>
+                    <div class="article-img-container">
+                        <img src="article33.png" alt="Entreprise digitale demain">
                     </div>
-                    <!-- MODIFICATION ICI : Lien vers article3.html -->
-                    <a href="article3.html" class="btn-read-more">Lire plus <i data-lucide="arrow-right" style="width:16px"></i></a>
+                    <div class="article-content">
+                        <h3>Casanet & Azure : construire l’entreprise de demain</h3>
+                        <p>Adoptez des technologies innovantes comme l’intelligence artificielle, l’analyse de données et les solutions collaboratives pour accélérer votre croissance digitale.</p>
+                        <a href="article3.html" class="btn-read-more">Lire plus <i data-lucide="arrow-right" style="width:16px"></i></a>
+                    </div>
                 </article>
             </div>
         </div>
     </section>
 
-    <section class="section" style="background: var(--primary); color: white;">
+    <section class="section" style="background: #0062ff; color: white;">
         <div class="container">
             <h2 class="section-title" style="text-align: center; color: white;">Le cloud, la Data et l’IA</h2>
             <div class="stats-grid">
@@ -206,12 +235,12 @@
             <h2 class="section-title" style="text-align: center;">Questions fréquentes</h2>
             <div class="faq-container">
                 <details>
-                    <summary>Pourquoi migrer vers le cloud ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
-                    <p style="padding-top: 15px; color: var(--text);">Pour gagner en agilité, en sécurité et réduire les coûts liés à la maintenance physique.</p>
+                    <summary>Pourquoi migrer vers Microsoft Azure ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
+                    <p style="padding-top: 15px; color: #64748b;">Pour bénéficier d'une infrastructure mondiale, d'une sécurité de pointe et d'une intégration parfaite avec vos outils existants.</p>
                 </details>
                 <details>
-                    <summary>Le cloud est-il sécurisé ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
-                    <p style="padding-top: 15px; color: var(--text);">Oui, les fournisseurs majeurs investissent massivement dans des protocoles de pointe.</p>
+                    <summary>Comment Casanet assure la sécurité ? <i data-lucide="chevron-down" style="width: 18px;"></i></summary>
+                    <p style="padding-top: 15px; color: #64748b;">En appliquant les meilleures pratiques de Microsoft et en assurant un monitoring 24/7 des actifs critiques.</p>
                 </details>
             </div>
         </div>
