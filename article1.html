@@ -46,15 +46,16 @@
             margin-bottom: 15px;
         }
 
-        /* Modification : Image plus petite et alignée à gauche */
+        /* Image optimisée et plus petite */
         .article-main-img {
             width: 100%;
-            max-width: 600px; /* Taille réduite */
-            height: 350px;    /* Hauteur réduite */
-            margin: 0 0 40px 0; /* Aligné à gauche, marge en bas */
-            border-radius: 30px;
+            max-width: 550px;
+            height: 320px;
+            margin: 0 40px 20px 0;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0, 98, 255, 0.1);
+            float: left; /* Aligné à gauche pour la créativité */
         }
 
         .article-main-img img {
@@ -64,36 +65,51 @@
         }
 
         .content-body {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             padding: 0 20px 100px 20px;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             line-height: 1.8;
             color: #334155;
         }
 
-        .content-body p {
-            margin-bottom: 25px;
+        .highlight-box {
+            background: #f8fafc;
+            border-left: 5px solid #4da6ff;
+            padding: 30px;
+            border-radius: 0 15px 15px 0;
+            margin: 30px 0;
+            font-style: italic;
         }
 
-        .content-body ul {
-            margin-bottom: 30px;
-            padding-left: 20px;
-        }
-
-        .content-body li {
-            margin-bottom: 10px;
+        .feature-list {
             list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .feature-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            transition: 0.3s;
         }
 
-        .content-body li::before {
-            content: "•";
-            color: #4da6ff;
-            font-weight: bold;
-            font-size: 1.5rem;
+        .feature-item:hover {
+            border-color: #4da6ff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .feature-item i {
+            color: #0062ff;
+            flex-shrink: 0;
         }
 
         .back-link {
@@ -109,10 +125,20 @@
 
         .back-link:hover { color: #0062ff; transform: translateX(-5px); }
 
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
         @media (max-width: 850px) {
             .cursor-follower, .cursor-dot { display: none; }
             html, body { cursor: auto; }
-            .article-main-img { height: 250px; border-radius: 20px; margin: 0 auto 30px auto; }
+            .article-main-img { 
+                float: none; 
+                margin: 0 auto 30px auto; 
+                height: 250px; 
+            }
         }
     </style>
 </head>
@@ -136,36 +162,41 @@
     <header class="article-header">
         <div class="container">
             <a href="blog.html" class="back-link"><i data-lucide="arrow-left"></i> Retour au blog</a>
-            <span class="category-tag">Casanet & Microsoft Azure</span>
+            <span class="category-tag">Innovation & Cloud</span>
             <h1 class="headline" style="max-width: 900px; margin: 0 auto;">Move to Cloud : Accélérez votre transformation digitale</h1>
         </div>
     </header>
 
     <main class="container content-body">
-        <div class="article-main-img">
-            <img src="article11.png" alt="Transformation Digitale avec Azure">
+        <div class="clearfix">
+            <div class="article-main-img">
+                <img src="article1.png" alt="Casanet Microsoft Azure Cloud">
+            </div>
+
+            <p><strong>Aujourd’hui, les entreprises doivent évoluer rapidement pour rester compétitives.</strong> Pourtant, beaucoup d’organisations sont encore freinées par des infrastructures lourdes, des serveurs coûteux à maintenir et des systèmes qui limitent l’innovation.</p>
+
+            <p>Avec l’expertise de <strong>Casanet</strong> et la puissance de <strong>Microsoft Azure</strong>, la migration vers le cloud devient une véritable opportunité stratégique et non une contrainte technique.</p>
         </div>
 
-        <article>
-            <p>Aujourd’hui, les entreprises doivent évoluer rapidement pour rester compétitives. Pourtant, beaucoup d’organisations sont encore freinées par des infrastructures lourdes, des serveurs coûteux à maintenir et des systèmes qui limitent l’innovation.</p>
+        <div class="highlight-box">
+            Casanet accompagne les entreprises dans la modernisation complète de leur environnement IT grâce à des solutions cloud intelligentes, évolutives et sécurisées. En s’appuyant sur Microsoft Azure, nous permettons aux organisations de centraliser leurs données et d'améliorer la collaboration.
+        </div>
 
-            <p><strong>Avec l’expertise de Casanet et la puissance de Microsoft Azure</strong>, la migration vers le cloud devient une véritable opportunité stratégique et non une contrainte technique.</p>
-            
-            <p>Casanet accompagne les entreprises dans la modernisation complète de leur environnement IT grâce à des solutions cloud intelligentes, évolutives et sécurisées. En s’appuyant sur Microsoft Azure, nous permettons aux organisations de centraliser leurs données, améliorer la collaboration entre équipes et déployer rapidement des applications métiers performantes.</p>
+        <p>Notre approche ne consiste pas uniquement à “déplacer” des données vers le cloud. Nous construisons une infrastructure capable de soutenir la croissance de l’entreprise sur le long terme. Grâce aux services Azure, les entreprises bénéficient d’une haute disponibilité, d’une puissance de calcul évolutive et d’une sécurité avancée répondant aux standards internationaux.</p>
 
-            <p>Notre approche ne consiste pas uniquement à “déplacer” des données vers le cloud. Nous construisons une infrastructure capable de soutenir la croissance de l’entreprise sur le long terme. Grâce aux services Azure, les entreprises bénéficient d’une haute disponibilité, d’une puissance de calcul évolutive et d’une sécurité avancée répondant aux standards internationaux.</p>
+        <h3 style="margin-top: 40px; color: #0062ff;">Le cloud comme levier d’innovation :</h3>
+        
+        <div class="feature-list">
+            <div class="feature-item"><i data-lucide="check-circle"></i> Déploiement rapide des services IT</div>
+            <div class="feature-item"><i data-lucide="check-circle"></i> Réduction des coûts d’infrastructure</div>
+            <div class="feature-item"><i data-lucide="check-circle"></i> Accès sécurisé partout et tout le temps</div>
+            <div class="feature-item"><i data-lucide="check-circle"></i> Collaboration simplifiée</div>
+            <div class="feature-item"><i data-lucide="check-circle"></i> Flexibilité de croissance</div>
+        </div>
 
-            <p><strong>Avec Casanet, le cloud devient un levier d’innovation :</strong></p>
-            <ul>
-                <li>Déploiement rapide des services IT</li>
-                <li>Réduction des coûts d’infrastructure</li>
-                <li>Accès sécurisé aux données partout et à tout moment</li>
-                <li>Collaboration simplifiée entre les équipes</li>
-                <li>Flexibilité pour accompagner la croissance de l’entreprise</li>
-            </ul>
-
-            <p>En combinant conseil stratégique, expertise technique et technologies Microsoft, Casanet aide les entreprises à réussir leur transformation digitale sans complexité supplémentaire.</p>
-        </article>
+        <p style="text-align: center; margin-top: 50px; font-weight: 600;">
+            En combinant conseil stratégique, expertise technique et technologies Microsoft, Casanet aide les entreprises à réussir leur transformation digitale sans complexité supplémentaire.
+        </p>
     </main>
 
     <footer>
@@ -187,8 +218,8 @@
             });
         });
 
-        const interactables = document.querySelectorAll('a, button');
-        interactables.forEach(item => {
+        const links = document.querySelectorAll('a, button, .feature-item');
+        links.forEach(item => {
             item.addEventListener('mouseenter', () => {
                 follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
                 follower.style.backgroundColor = 'rgba(77, 166, 255, 0.3)';
